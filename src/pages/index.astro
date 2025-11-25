@@ -1,0 +1,115 @@
+---
+import "../styles/global.css";
+import Sidebar from "../components/Sidebar.astro";
+import Home from "../components/Home.astro";
+import About from "../components/About.astro";
+import Experience from "../components/Experience.astro";
+import Projects from "../components/Projects.astro";
+import Skills from "../components/Skills.astro";
+import Contact from "../components/Contact.astro";
+---
+
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Portafolio Profesional - Iran Lewis Ortiz (AI GLOSSY)</title>
+	</head>
+	<body class="overflow-hidden">
+		<Sidebar />
+		<main id="contentArea" class="main-content-area">
+			<Home />
+			<About />
+			<Experience />
+			<Projects />
+			<Skills />
+			<Contact />
+
+			<!-- Pie de página (Footer) para asegurar el espacio de scroll final -->
+			<footer
+				class="h-40 bg-gray-900 flex items-center justify-center text-sm text-gray-500"
+			>
+				© 2024 Iran Lewis Ortiz. Portafolio de Arquitectura
+				Tecnológica.
+			</footer>
+		</main>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const sidebarItems = document.querySelectorAll(
+					"#sidebar .sidebar-item",
+				);
+				const contentArea = document.getElementById("contentArea");
+				const sections = document.querySelectorAll(".content-section");
+
+				if (!contentArea) return;
+
+				// Función de Scroll Suave
+				sidebarItems.forEach((item) => {
+					item.addEventListener(
+						"click",
+						function (this: HTMLElement, e) {
+							// Solo prevenir el comportamiento por defecto si no es un enlace de descarga externo
+							const isExternalLink =
+								this.getAttribute("target") === "_blank";
+							if (!isExternalLink) {
+								e.preventDefault();
+								const href = this.getAttribute("href");
+								if (href) {
+									const targetId = href.substring(1);
+									const targetElement =
+										document.getElementById(targetId);
+
+									if (targetElement) {
+										// Usa scrollIntoView para un desplazamiento nativo y suave
+										targetElement.scrollIntoView({
+											behavior: "smooth",
+										});
+									}
+								}
+							}
+						},
+					);
+				});
+
+				// Función para activar el elemento del sidebar al hacer scroll
+				const activateSidebarLink = (id: string) => {
+					sidebarItems.forEach((item) => {
+						item.classList.remove("active");
+						if (item.getAttribute("data-section") === id) {
+							item.classList.add("active");
+						}
+					});
+				};
+
+				// Detección de la sección visible al hacer scroll
+				contentArea.addEventListener("scroll", () => {
+					let currentActiveSection = "home";
+
+					// Itera de la última sección a la primera
+					for (let i = sections.length - 1; i >= 0; i--) {
+						const section = sections[i];
+						if (section instanceof HTMLElement) {
+							// El 25% del viewport es suficiente para considerar la sección "visible"
+							const sectionTop = section.offsetTop;
+							const scrollPosition = contentArea.scrollTop;
+
+							if (
+								scrollPosition >=
+								sectionTop - window.innerHeight * 0.25
+							) {
+								currentActiveSection = section.id;
+								break;
+							}
+						}
+					}
+
+					activateSidebarLink(currentActiveSection);
+				});
+
+				// Inicialización al cargar la página
+				activateSidebarLink("home");
+			});
+		</script>
+	</body>
+</html>

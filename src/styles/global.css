@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary-ai-blue: #0A84FF;
+    --color-secondary-ai-purple: #8A3FFC;
+    --color-ai-accent-cyan: #00C7B1;
+
+    --font-sans: 'Inter', sans-serif;
+}
+
+/* Definición de la fuente Inter y variables de color */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root {
+    --sidebar-width: 80px;
+
+    /* Default Dark Mode Variables */
+    --bg-primary: #121212;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --accent-primary: #0A84FF;
+    --accent-secondary: #8A3FFC;
+    --accent-tertiary: #00C7B1;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+:root[data-theme="light"] {
+    --bg-primary: #f5f7fa;
+    --bg-secondary: #ffffff;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --accent-primary: #0066cc;
+    --accent-secondary: #7c3aed;
+    --accent-tertiary: #00a19d;
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-border: rgba(0, 0, 0, 0.05);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="glossy"] {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --accent-primary: #38bdf8;
+    --accent-secondary: #c084fc;
+    --accent-tertiary: #2dd4bf;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --shadow-color: rgba(0, 0, 0, 0.25);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Utility Classes */
+.centered-container {
+    max-width: 1200px;
+    /* Limit width on large screens */
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.glossy-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 var(--shadow-color);
+}
+
+/* Contenedor principal con desplazamiento */
+.main-content-area {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+/* Sección de Contenido */
+.content-section {
+    min-height: 100vh;
+    padding: 4rem 10%;
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--glass-border);
+    scroll-margin-top: 0px;
+    display: flex;
+    align-items: center;
+    /* Center vertically */
+    transition: background-color 0.3s ease;
+}
+
+/* Variación de fondo para secciones alternas */
+.content-section:nth-child(even) {
+    background-color: var(--bg-secondary);
+}
+
+/* Estilos para la línea de tiempo de experiencia */
+.timeline-item {
+    border-left: 3px solid var(--accent-tertiary);
+    padding-left: 1.5rem;
+    margin-left: 8px;
+    position: relative;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -8px;
+    top: 0.5rem;
+    width: 16px;
+    height: 16px;
+    background-color: var(--bg-primary);
+    border-radius: 50%;
+    border: 3px solid var(--accent-tertiary);
+    box-shadow: 0 0 0 2px var(--bg-secondary);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    :root {
+        --sidebar-width: 0px;
+    }
+
+    .main-content-area {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .content-section {
+        padding: 2rem 5%;
+    }
+}

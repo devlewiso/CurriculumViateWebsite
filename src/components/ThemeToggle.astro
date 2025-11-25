@@ -1,0 +1,127 @@
+---
+
+---
+
+<button
+    id="theme-toggle"
+    class="fixed top-6 right-6 z-50 p-3 rounded-full glossy-card hover:scale-110 transition-transform duration-200 cursor-pointer"
+    title="Cambiar Tema"
+>
+    <!-- Sun Icon (Light Mode) -->
+    <svg
+        id="sun-icon"
+        class="w-6 h-6 text-yellow-500 hidden"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+        ></path>
+    </svg>
+    <!-- Moon Icon (Dark Mode) -->
+    <svg
+        id="moon-icon"
+        class="w-6 h-6 text-white hidden"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+        ></path>
+    </svg>
+    <!-- Glossy Icon (Glossy Mode) -->
+    <svg
+        id="glossy-icon"
+        class="w-6 h-6 text-cyan-400 hidden"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+        ></path>
+    </svg>
+</button>
+
+<script>
+    const themeToggle = document.getElementById("theme-toggle");
+    const sunIcon = document.getElementById("sun-icon");
+    const moonIcon = document.getElementById("moon-icon");
+    const glossyIcon = document.getElementById("glossy-icon");
+
+    if (themeToggle && sunIcon && moonIcon && glossyIcon) {
+        // Check for saved theme preference or use system preference
+        const getPreferredTheme = () => {
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme) {
+                return savedTheme;
+            }
+            return window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+        };
+
+        const setTheme = (theme: string) => {
+            document.documentElement.setAttribute("data-theme", theme);
+            localStorage.setItem("theme", theme);
+
+            // Hide all icons first
+            sunIcon.classList.add("hidden");
+            moonIcon.classList.add("hidden");
+            glossyIcon.classList.add("hidden");
+
+            // Show the icon for the NEXT theme (target)
+            // If current is Light, next is Dark -> Show Sun (to switch to Dark? No, standard is show what you switch TO)
+            // Wait, standard toggle:
+            // If in Light mode, show Moon (to switch to Dark).
+            // If in Dark mode, show Sun (to switch to Light).
+
+            // My cycle: Light -> Dark -> Glossy -> Light
+
+            if (theme === "light") {
+                // Current is Light. Next is Dark. Show Moon.
+                moonIcon.classList.remove("hidden");
+            } else if (theme === "dark") {
+                // Current is Dark. Next is Glossy. Show Sparkle.
+                glossyIcon.classList.remove("hidden");
+            } else {
+                // Current is Glossy. Next is Light. Show Sun.
+                sunIcon.classList.remove("hidden");
+            }
+        };
+
+        // Initialize theme
+        setTheme(getPreferredTheme());
+
+        // Toggle theme on click
+        themeToggle.addEventListener("click", () => {
+            const currentTheme =
+                document.documentElement.getAttribute("data-theme");
+
+            let newTheme = "light";
+            if (currentTheme === "light") {
+                newTheme = "dark";
+            } else if (currentTheme === "dark") {
+                newTheme = "glossy";
+            } else {
+                newTheme = "light";
+            }
+
+            setTheme(newTheme);
+        });
+    }
+</script>
