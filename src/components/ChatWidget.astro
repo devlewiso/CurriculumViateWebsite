@@ -1,0 +1,192 @@
+---
+// ChatWidget.astro - Minimal version
+---
+
+<div class="chat-widget">
+    <button class="chat-btn" id="chatBtn">💬</button>
+
+    <div class="chat-box" id="chatBox">
+        <div class="chat-header">
+            <span>Chat</span>
+            <button id="closeBtn">✕</button>
+        </div>
+
+        <div class="messages" id="messages">
+            <div class="msg bot">Hola! ¿En qué puedo ayudarte?</div>
+        </div>
+
+        <div class="input-box">
+            <input type="text" id="input" placeholder="Escribe..." />
+            <button id="sendBtn">➤</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .chat-widget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 999;
+    }
+    .chat-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #0a84ff, #5e5ce6);
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    .chat-btn:hover {
+        transform: scale(1.1);
+    }
+
+    .chat-box {
+        position: absolute;
+        bottom: 80px;
+        right: 0;
+        width: 350px;
+        height: 500px;
+        background: rgba(30, 30, 30, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        display: none;
+        flex-direction: column;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    .chat-box.active {
+        display: flex;
+    }
+
+    .chat-header {
+        padding: 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        font-weight: 600;
+    }
+    .chat-header button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .msg {
+        padding: 10px 14px;
+        border-radius: 12px;
+        max-width: 80%;
+        word-wrap: break-word;
+    }
+    .msg.bot {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        align-self: flex-start;
+    }
+    .msg.user {
+        background: linear-gradient(135deg, #0a84ff, #5e5ce6);
+        color: white;
+        align-self: flex-end;
+    }
+
+    .input-box {
+        padding: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        gap: 8px;
+    }
+    .input-box input {
+        flex: 1;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.05);
+        color: white;
+        outline: none;
+    }
+    .input-box button {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #0a84ff, #5e5ce6);
+        border: none;
+        color: white;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    const WEBHOOK_URL = "https://trigger.nosotros.space/webhook/mycv";
+    const CHAT_ID = crypto?.randomUUID() || `chat-${Date.now()}`;
+
+    const chatBtn = document.getElementById("chatBtn");
+    const chatBox = document.getElementById("chatBox");
+    const closeBtn = document.getElementById("closeBtn");
+    const input = document.getElementById("input") as HTMLInputElement;
+    const sendBtn = document.getElementById("sendBtn");
+    const messages = document.getElementById("messages");
+
+    chatBtn?.addEventListener("click", () =>
+        chatBox?.classList.toggle("active"),
+    );
+    closeBtn?.addEventListener("click", () =>
+        chatBox?.classList.remove("active"),
+    );
+
+    function addMsg(text: string, sender: "user" | "bot") {
+        const div = document.createElement("div");
+        div.className = `msg ${sender}`;
+        div.textContent = text;
+        messages?.appendChild(div);
+        if (messages) messages.scrollTop = messages.scrollHeight;
+    }
+
+    async function send() {
+        const text = input?.value.trim();
+        if (!text) return;
+
+        addMsg(text, "user");
+        input!.value = "";
+
+        try {
+            const res = await fetch(WEBHOOK_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: new URLSearchParams({ message: text, chat_id: CHAT_ID }),
+            });
+
+            if (res.ok) {
+                const data = await res.text();
+                let reply = "Sin respuesta";
+                try {
+                    const json = JSON.parse(data);
+                    reply = json.output || json.message || data;
+                } catch {
+                    reply = data || "Sin respuesta";
+                }
+                addMsg(reply.replace(/\\n/g, "\n"), "bot");
+            }
+        } catch (err) {
+            addMsg("Error de conexión", "bot");
+        }
+    }
+
+    sendBtn?.addEventListener("click", send);
+    input?.addEventListener("keypress", (e) => e.key === "Enter" && send());
+</script>

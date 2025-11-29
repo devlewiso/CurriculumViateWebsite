@@ -8,9 +8,6 @@
     --font-sans: 'Inter', sans-serif;
 }
 
-/* Definición de la fuente Inter y variables de color */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
 :root {
     --sidebar-width: 80px;
 
