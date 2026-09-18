@@ -1,0 +1,299 @@
+---
+const CV_URL = "https://drive.google.com/file/d/1Sb5StgzBUO3deQbTH78lIwBIMB0w7Ucp/view?usp=drive_link";
+
+const stats = [
+    { value: "3+",  label: "Años en BPO financiero & automatización" },
+    { value: "15%", label: "Reducción de errores manuales" },
+    { value: "20+", label: "Servicios self-hosted orquestados" },
+];
+
+const stack = ["Google Cloud", "Dialogflow CX", "n8n", "Proxmox VE", "Docker", "Python", "Twilio"];
+---
+
+<section id="home" class="section hero">
+    <div class="bg-mesh hero-depth" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <!-- Pieza de arte generativo (FLUX.1-schnell, gratuito vía Space de Hugging Face) —
+         atmósfera decorativa detrás del texto, oculta en pantallas angostas. -->
+    <div class="hero__art hero-depth" aria-hidden="true">
+        <img src="/images/hero-surreal.webp" alt="" width="1200" height="686" fetchpriority="low" />
+    </div>
+
+    <div class="shell hero__inner hero-parallax">
+        <p class="badge-live">
+            <span class="dot" aria-hidden="true"></span>
+            Disponible para proyectos
+        </p>
+
+        <h1 class="hero__name">
+            Iran Lewis <span class="hero__name-accent">Ortiz</span>
+        </h1>
+
+        <p class="hero__role">
+            Technology Architect
+            <span class="hero__role-sep" aria-hidden="true">/</span>
+            <span class="hero__role-em">AI, Automation &amp; Cloud Integration</span>
+        </p>
+
+        <p class="hero__lede">
+            Diseño sistemas que se operan solos. Integro entornos <strong>HomeLab</strong> con
+            <strong>Google Cloud</strong>, orquesto IA conversacional con <strong>Dialogflow CX</strong>
+            y construyo automatizaciones auto-reparables dirigidas por datos.
+        </p>
+
+        <div class="hero__actions">
+            <a href="#contact" class="btn btn--primary">
+                Trabajemos juntos
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+                    <path d="M5 12h13M13 6l6 6-6 6" />
+                </svg>
+            </a>
+            <a href={CV_URL} target="_blank" rel="noopener noreferrer" class="btn btn--ghost">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                     stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+                    <path d="M12 4v10m0 0-3.5-3.5M12 14l3.5-3.5M5 17.5v1A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-1" />
+                </svg>
+                Descargar CV
+            </a>
+        </div>
+
+        <ul class="hero__meta">
+            <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" />
+                    <circle cx="12" cy="10" r="2.6" />
+                </svg>
+                Guatemala, Centroamérica
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 7.5 12 13l8-5.5M5 5.5h14a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-11a1 1 0 0 1 1-1Z" />
+                </svg>
+                <a href="mailto:devlewiso@gmail.com">devlewiso@gmail.com</a>
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 3v18M3 12h18" opacity="0" />
+                    <path d="M8 10.5v6M8 7.3v.1M12 16.5v-3.4a2.1 2.1 0 0 1 4.2 0v3.4M4.5 4h15a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-.5.5h-15a.5.5 0 0 1-.5-.5v-15a.5.5 0 0 1 .5-.5Z" />
+                </svg>
+                <a href="https://linkedin.com/in/devlewiso" target="_blank" rel="noopener noreferrer">
+                    /in/devlewiso
+                </a>
+            </li>
+        </ul>
+
+        <dl class="hero__stats stagger">
+            {stats.map((s, i) => (
+                <div class="hero__stat reveal" style={`--i:${i}; --reveal-delay:${i * 90}ms`}>
+                    <dt>{s.value}</dt>
+                    <dd>{s.label}</dd>
+                </div>
+            ))}
+        </dl>
+
+        <ul class="hero__stack" aria-label="Tecnologías principales">
+            {stack.map((t) => <li class="chip">{t}</li>)}
+        </ul>
+    </div>
+
+    <a href="#about" class="hero__scroll" aria-label="Ir al resumen profesional">
+        <span class="hero__scroll-track"><span class="hero__scroll-dot"></span></span>
+        <span class="hero__scroll-text">Scroll</span>
+    </a>
+</section>
+
+<style>
+    .hero {
+        min-height: 100svh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        padding-block: clamp(6rem, 14vh, 9rem) clamp(7rem, 16vh, 10rem);
+    }
+    .hero__inner { position: relative; z-index: 1; max-width: 62rem; }
+
+    /* Arte generado (surreal, FLUX.1-schnell) — atmósfera detrás del texto.
+       Sólo en pantallas anchas, donde sobra espacio a la derecha del texto;
+       se desvanece hacia el fondo con una máscara para no competir con el contenido. */
+    .hero__art {
+        display: none;
+        position: absolute;
+        top: 50%;
+        right: -4%;
+        translate: 0 -50%;
+        width: min(42vw, 44rem);
+        z-index: 0;
+        /* Detrás de .hero__inner (z-index:1): un hover aquí nunca puede tapar
+           botones ni tarjetas — el elemento de arriba siempre gana el puntero. */
+        pointer-events: auto;
+        -webkit-mask-image: radial-gradient(60% 75% at 62% 50%, #000 46%, transparent 88%);
+        mask-image: radial-gradient(60% 75% at 62% 50%, #000 46%, transparent 88%);
+        opacity: 0.5;
+        transition: opacity var(--dur-slow) var(--ease-out);
+    }
+    .hero__art:hover { opacity: 0.72; }
+    .hero__art img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: var(--r-xl);
+        scale: 1;
+        filter: saturate(1);
+        transition: scale 900ms var(--ease-out), filter 900ms var(--ease-out);
+    }
+    .hero__art:hover img { scale: 1.035; filter: saturate(1.15); }
+    :root[data-theme="light"] .hero__art { opacity: 0.16; }
+    :root[data-theme="light"] .hero__art:hover { opacity: 0.3; }
+    @media (min-width: 1280px) { .hero__art { display: block; } }
+
+    .hero__name {
+        margin-top: 1.5rem;
+        font-size: clamp(2.75rem, 9vw, 5.75rem);
+        font-weight: 700;
+        letter-spacing: -0.04em;
+    }
+    .hero__name-accent {
+        background: linear-gradient(100deg, var(--grad-a) 0%, var(--grad-b) 65%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .hero__role {
+        margin: 0.9rem 0 0;
+        font-family: var(--font-display);
+        font-size: clamp(1.05rem, 2.6vw, 1.6rem);
+        font-weight: 500;
+        color: var(--fg-muted);
+        letter-spacing: -0.01em;
+    }
+    .hero__role-sep { color: var(--brand); margin-inline: 0.5rem; }
+    .hero__role-em { color: var(--accent); }
+
+    .hero__lede {
+        margin: 1.75rem 0 0;
+        max-width: 54ch;
+        font-size: clamp(1rem, 1.9vw, 1.1875rem);
+        color: var(--fg-muted);
+    }
+    .hero__lede strong { color: var(--fg); font-weight: 600; }
+
+    .hero__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.875rem;
+        margin-top: 2.25rem;
+    }
+
+    .hero__meta {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.75rem;
+        margin: 2.25rem 0 0;
+        padding: 0;
+        font-size: 0.9375rem;
+        color: var(--fg-muted);
+    }
+    .hero__meta li { display: inline-flex; align-items: center; gap: 0.5rem; }
+    .hero__meta svg { width: 1.05rem; height: 1.05rem; color: var(--accent); flex: none; }
+    .hero__meta a {
+        color: inherit;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+    }
+    .hero__meta a:hover { color: var(--fg); border-bottom-color: var(--accent); }
+
+    .hero__stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+        gap: 1px;
+        margin: 3rem 0 0;
+        background: var(--line);
+        border: 1px solid var(--line);
+        border-radius: var(--r-lg);
+        overflow: hidden;
+    }
+    .hero__stat { background: var(--surface); padding: 1.25rem 1.4rem; }
+    .hero__stat dt {
+        font-family: var(--font-display);
+        font-size: clamp(1.75rem, 4vw, 2.25rem);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        background: linear-gradient(120deg, var(--grad-a), var(--grad-b));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .hero__stat dd {
+        margin: 0.55rem 0 0;
+        font-size: 0.8125rem;
+        line-height: 1.45;
+        color: var(--fg-subtle);
+    }
+
+    .hero__stack {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1.75rem 0 0;
+        padding: 0;
+    }
+
+    .hero__scroll {
+        position: absolute;
+        bottom: clamp(1.5rem, 5vh, 3rem);
+        left: 50%;
+        translate: -50% 0;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--fg-subtle);
+        text-decoration: none;
+        transition: color var(--dur-base) var(--ease-out);
+    }
+    .hero__scroll:hover { color: var(--accent); }
+    .hero__scroll-track {
+        display: block;
+        width: 1.4rem;
+        height: 2.3rem;
+        border: 1px solid var(--line-strong);
+        border-radius: var(--r-pill);
+        position: relative;
+    }
+    .hero__scroll-dot {
+        position: absolute;
+        left: 50%;
+        top: 0.45rem;
+        translate: -50% 0;
+        width: 0.25rem;
+        height: 0.45rem;
+        border-radius: var(--r-pill);
+        background: currentColor;
+        animation: scroll-hint 2s var(--ease-io) infinite;
+    }
+    @keyframes scroll-hint {
+        0%, 100% { transform: translateY(0); opacity: 1; }
+        50%      { transform: translateY(0.75rem); opacity: 0.3; }
+    }
+    .hero__scroll-text {
+        font-family: var(--font-mono);
+        font-size: 0.5625rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+    }
+    @media (max-width: 640px) { .hero__scroll { display: none; } }
+    @media (prefers-reduced-motion: reduce) {
+        .hero__scroll-dot { animation: none; }
+    }
+</style>

@@ -1,0 +1,218 @@
+---
+const items = [
+    { id: "home",       label: "Inicio",     title: "Inicio",
+      d: "M3.5 10.5 12 3.5l8.5 7M5.5 9.5V20h13V9.5" },
+    { id: "about",      label: "Perfil",     title: "Resumen profesional",
+      d: "M12 12a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5ZM4.5 20a7.5 7.5 0 0 1 15 0" },
+    { id: "experience", label: "Trayectoria", title: "Experiencia profesional",
+      d: "M4 8h16v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8ZM9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8M4 13h16" },
+    { id: "projects",   label: "Proyectos",  title: "Proyectos y automatizaciones",
+      d: "M9.5 20 14.5 4M18 8.5 21.5 12 18 15.5M6 15.5 2.5 12 6 8.5" },
+    { id: "skills",     label: "Stack",      title: "Stack técnico y certificaciones",
+      d: "M12 3.5 20 8v8l-8 4.5L4 16V8l8-4.5ZM4 8l8 4.5M20 8l-8 4.5M12 12.5V20.5" },
+    { id: "contact",    label: "Contacto",   title: "Contacto",
+      d: "M3.5 7.5 12 13l8.5-5.5M4.5 5.5h15a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1v-11a1 1 0 0 1 1-1Z" },
+];
+const CV_URL = "https://drive.google.com/file/d/1Sb5StgzBUO3deQbTH78lIwBIMB0w7Ucp/view?usp=drive_link";
+---
+
+<!-- ============ DESKTOP RAIL ============ -->
+<aside id="rail" class="rail glass" aria-label="Navegación principal">
+    <a href="#home" class="rail__brand" aria-label="Iran Lewis Ortiz — inicio">
+        <span class="rail__mark">ILO</span>
+    </a>
+
+    <nav class="rail__nav">
+        {items.map((it) => (
+            <a
+                href={`#${it.id}`}
+                class="rail__item"
+                data-nav={it.id}
+                title={it.title}
+                aria-label={it.title}
+            >
+                <span class="rail__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+                         aria-hidden="true">
+                        <path d={it.d} />
+                    </svg>
+                </span>
+                <span class="rail__label">{it.label}</span>
+            </a>
+        ))}
+    </nav>
+
+    <div class="rail__foot">
+        <a href={CV_URL} target="_blank" rel="noopener noreferrer"
+           class="rail__item" title="Descargar CV en PDF" aria-label="Descargar CV en PDF">
+            <span class="rail__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 4v10m0 0-3.5-3.5M12 14l3.5-3.5M5 17.5v1A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-1" />
+                </svg>
+            </span>
+            <span class="rail__label">CV</span>
+        </a>
+    </div>
+</aside>
+
+<!-- ============ MOBILE TAB BAR ============ -->
+<nav id="tabbar" class="tabbar glass" aria-label="Navegación principal (móvil)">
+    {items.map((it) => (
+        <a href={`#${it.id}`} class="tabbar__item" data-nav={it.id} aria-label={it.title}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d={it.d} />
+            </svg>
+            <span>{it.label}</span>
+        </a>
+    ))}
+</nav>
+
+<style>
+    /* ---------------- Desktop rail ---------------- */
+    .rail {
+        position: fixed;
+        inset-block: 0;
+        left: 0;
+        z-index: 60;
+        width: var(--rail-w);
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        padding-block: 1.5rem 1rem;
+        border-right: 1px solid var(--line);
+        border-inline-start: none;
+    }
+    @media (min-width: 900px) {
+        .rail { display: flex; }
+    }
+
+    .rail__brand {
+        display: grid;
+        place-items: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: var(--r-md);
+        background: linear-gradient(135deg, var(--v-600), var(--c-500));
+        color: #fff;
+        font-family: var(--font-display);
+        font-size: 0.8125rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-decoration: none;
+        box-shadow: 0 6px 18px -8px rgba(124, 92, 255, 0.9);
+        transition: transform var(--dur-base) var(--ease-out),
+                    box-shadow var(--dur-base) var(--ease-out);
+    }
+    .rail__brand:hover {
+        transform: translateY(-2px) rotate(-3deg);
+        box-shadow: 0 10px 26px -8px rgba(124, 92, 255, 1);
+    }
+
+    .rail__nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        margin-top: 2.5rem;
+        width: 100%;
+    }
+    .rail__foot { margin-top: auto; width: 100%; padding-top: 1rem; }
+
+    .rail__item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+        padding-block: 0.7rem;
+        color: var(--fg-subtle);
+        text-decoration: none;
+        transition: color var(--dur-base) var(--ease-out);
+    }
+    /* Active indicator pill — animates between states */
+    .rail__item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        translate: 0 -50%;
+        width: 3px;
+        height: 0;
+        border-radius: 0 var(--r-pill) var(--r-pill) 0;
+        background: linear-gradient(180deg, var(--v-600), var(--c-400));
+        transition: height var(--dur-base) var(--ease-out);
+    }
+    .rail__item:hover { color: var(--fg); }
+    .rail__item:hover::before { height: 1rem; }
+    .rail__item.is-active { color: var(--fg); }
+    .rail__item.is-active::before { height: 2.1rem; }
+
+    .rail__icon {
+        display: grid;
+        place-items: center;
+        width: 2.4rem;
+        height: 2.4rem;
+        border-radius: var(--r-md);
+        transition: background var(--dur-base) var(--ease-out),
+                    transform var(--dur-base) var(--ease-out);
+    }
+    .rail__icon svg { width: 1.3rem; height: 1.3rem; }
+    .rail__item:hover .rail__icon { background: var(--glass-hover); transform: translateY(-1px); }
+    .rail__item.is-active .rail__icon { background: var(--brand-soft); }
+
+    .rail__label {
+        font-family: var(--font-mono);
+        font-size: 0.5625rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        opacity: 0.85;
+    }
+
+    /* ---------------- Mobile tab bar ---------------- */
+    .tabbar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 60;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        border-top: 1px solid var(--line);
+        border-inline: none;
+        border-bottom: none;
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    @media (min-width: 900px) { .tabbar { display: none; } }
+
+    .tabbar__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.2rem;
+        min-height: 3.5rem;           /* ≥44px touch target */
+        padding-block: 0.5rem;
+        color: var(--fg-subtle);
+        text-decoration: none;
+        transition: color var(--dur-fast) var(--ease-out);
+    }
+    .tabbar__item svg { width: 1.25rem; height: 1.25rem; }
+    .tabbar__item span {
+        max-width: 100%;
+        padding-inline: 0.15rem;
+        font-size: 0.5625rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    /* Pantallas muy angostas (≤340px): el ícono basta, la etiqueta se achica */
+    @media (max-width: 340px) {
+        .tabbar__item span { font-size: 0.5rem; letter-spacing: 0; }
+    }
+    .tabbar__item.is-active { color: var(--accent); }
+</style>

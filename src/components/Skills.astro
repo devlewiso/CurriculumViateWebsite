@@ -1,136 +1,234 @@
 ---
+const groups = [
+    {
+        label: "IA & Automatización",
+        d: "M12 3.5a3 3 0 0 1 3 3v.6a3 3 0 0 1 2.6 4.4 3 3 0 0 1-2.6 4.4v.6a3 3 0 0 1-6 0v-.6A3 3 0 0 1 6.4 11.5 3 3 0 0 1 9 7.1V6.5a3 3 0 0 1 3-3Z",
+        items: ["Dialogflow CX / ES", "AI Automation", "n8n", "Open WebUI", "Twilio", "REST APIs"],
+    },
+    {
+        label: "Cloud & Backend",
+        d: "M6.5 18.5A3.5 3.5 0 0 1 6 11.6a5 5 0 0 1 9.6-1.4 3.9 3.9 0 0 1 .9 7.7",
+        items: ["Google Cloud Functions", "Python", "SQL", "Excel VBA"],
+    },
+    {
+        label: "Infraestructura & Ops",
+        d: "M4.5 5.5h15a.5.5 0 0 1 .5.5v3.5a.5.5 0 0 1-.5.5h-15a.5.5 0 0 1-.5-.5V6a.5.5 0 0 1 .5-.5ZM4.5 14h15a.5.5 0 0 1 .5.5V18a.5.5 0 0 1-.5.5h-15A.5.5 0 0 1 4 18v-3.5a.5.5 0 0 1 .5-.5ZM7.5 7.75h.01M7.5 16.25h.01",
+        items: ["Linux", "Proxmox VE", "Docker", "CasaOS", "Prometheus", "Omada Controller", "NVR", "VDI Testing (Win 11 Citrix)"],
+    },
+    {
+        label: "Frontend",
+        d: "M9.5 20 14.5 4M18 8.5 21.5 12 18 15.5M6 15.5 2.5 12 6 8.5",
+        items: ["Astro", "Next.js", "Vue", "Vite"],
+    },
+    {
+        label: "Home & Media Stack",
+        d: "M3.5 10.5 12 3.5l8.5 7M5.5 9.5V20h13V9.5",
+        items: ["Home Assistant", "Plex", "Sonarr", "Radarr", "Overseerr", "Prowlarr"],
+    },
+];
 
+const certs = [
+    { name: "Google Professional Workspace Administrator", issuer: "Google", featured: true },
+    { name: "Microsoft 365 Platforms and Apps (Azure Fundamentals)", issuer: "Microsoft" },
+    { name: "PCI DSS: Securing Data, Systems and Applications", issuer: "PCI SSC" },
+    { name: "Six Sigma White Belt", issuer: "Six Sigma" },
+    { name: "DEX Certification", issuer: "Capgemini" },
+];
+
+const soft = [
+    "Pensamiento analítico",
+    "Resolución creativa de problemas",
+    "Optimización de procesos",
+    "Adaptabilidad",
+    "Innovación dirigida por investigación",
+    "Bilingüe ES / EN",
+];
 ---
 
-<section id="skills" class="content-section flex items-center justify-center">
-    <div class="max-w-4xl w-full">
-        <!-- Espacio para Imagen de Skills -->
-        <div
-            class="mb-8 w-full h-40 bg-gradient-to-br from-ai-dark-bg to-ai-light-bg rounded-lg shadow-xl flex items-center justify-center text-gray-500 text-lg border border-white border-opacity-10"
-        >
-            [Espacio para Imagen: Iconos de Tecnología (Cloud, AI, Python)]
+<section id="skills" class="section">
+    <div class="shell">
+        <header class="sk__head">
+            <p class="eyebrow reveal">Capacidades</p>
+            <h2 class="section-title reveal" style="--reveal-delay:60ms">Stack &amp; certificaciones</h2>
+            <p class="section-lede reveal" style="--reveal-delay:120ms">
+                Herramientas con las que trabajo a diario, agrupadas por la capa del sistema
+                donde viven.
+            </p>
+        </header>
+
+        <div class="sk__grid stagger">
+            {groups.map((g, i) => (
+                <article class="sk__card card card--hover reveal" style={`--i:${i}; --reveal-delay:${i * 80}ms`}>
+                    <header class="sk__card-head">
+                        <span class="sk__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d={g.d} />
+                            </svg>
+                        </span>
+                        <h3>{g.label}</h3>
+                        <span class="sk__count">{g.items.length}</span>
+                    </header>
+                    <ul class="sk__items">
+                        {g.items.map((it) => <li class="chip">{it}</li>)}
+                    </ul>
+                </article>
+            ))}
         </div>
 
-        <h3
-            class="text-3xl font-bold mb-6 text-white border-b-2 border-secondary-ai-purple pb-2"
-        >
-            Habilidades & Certificaciones
-        </h3>
-
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Habilidades Técnicas -->
-            <div>
-                <h4 class="text-2xl font-semibold text-primary-ai-blue mb-4">
-                    Stack Tecnológico
-                </h4>
-                <div class="flex flex-wrap gap-2">
-                    <span class="skill-tag">Linux</span>
-                    <span class="skill-tag">Next.js</span>
-                    <span class="skill-tag">Astro</span>
-                    <span class="skill-tag">Vue</span>
-                    <span class="skill-tag">Vite</span>
-                    <span class="skill-tag">Dialogflow CX/ES</span>
-                    <span class="skill-tag">AI Automation</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">REST APIs</span>
-                    <span class="skill-tag">Google Cloud Functions</span>
-                    <span class="skill-tag">Twilio</span>
-                    <span class="skill-tag">n8n</span>
-                    <span class="skill-tag">Proxmox VE</span>
-                    <span class="skill-tag">CasaOS</span>
-                    <span class="skill-tag">Home Assistant</span>
-                    <span class="skill-tag">Plex</span>
-                    <span class="skill-tag">Sonarr</span>
-                    <span class="skill-tag">Radarr</span>
-                    <span class="skill-tag">Overseerr</span>
-                    <span class="skill-tag">Prowlarr</span>
-                    <span class="skill-tag">Omada Controller</span>
-                    <span class="skill-tag">Open WebUI</span>
-                    <span class="skill-tag">NVR</span>
-                    <span class="skill-tag">Prometheus</span>
-                    <span class="skill-tag">Docker</span>
-                    <span class="skill-tag"
-                        >VDI Testing (Windows 11 Citrix)</span
-                    >
-                    <span class="skill-tag">SQL / VBA / Advanced Excel</span>
-                </div>
-            </div>
-
-            <!-- Certificaciones y Habilidades Blandas -->
-            <div class="space-y-6">
-                <div>
-                    <h4
-                        class="text-2xl font-semibold text-primary-ai-blue mb-4"
-                    >
-                        Certificaciones
-                    </h4>
-                    <ul class="list-disc list-inside text-text-light space-y-2">
-                        <li>**Google Professional Workspace Administrator**</li>
-                        <li>
-                            Microsoft 365 Platforms and Apps (Azure
-                            Fundamentals)
+        <div class="sk__split">
+            <section class="sk__panel reveal">
+                <h3 class="sk__panel-title">Certificaciones</h3>
+                <ul class="certs">
+                    {certs.map((c) => (
+                        <li class={`cert ${c.featured ? "cert--featured" : ""}`}>
+                            <span class="cert__badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                                     stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 3.5 14.6 9l6 .9-4.3 4.2 1 6-5.3-2.8-5.3 2.8 1-6L3.4 9.9 9.4 9 12 3.5Z" />
+                                </svg>
+                            </span>
+                            <span class="cert__text">
+                                <span class="cert__name">{c.name}</span>
+                                <span class="cert__issuer">{c.issuer}</span>
+                            </span>
                         </li>
-                        <li>
-                            PCI DSS: Securing Data, Systems, and Applications
-                        </li>
-                        <li>Six Sigma White Belt</li>
-                        <li>DEX Certification (Capgemini)</li>
-                    </ul>
-                </div>
+                    ))}
+                </ul>
+            </section>
 
-                <div>
-                    <h4
-                        class="text-2xl font-semibold text-primary-ai-blue mb-4"
-                    >
-                        Habilidades Blandas
-                    </h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="soft-skill-tag">Pensamiento Analítico</span
-                        >
-                        <span class="soft-skill-tag"
-                            >Resolución Creativa de Problemas</span
-                        >
-                        <span class="soft-skill-tag"
-                            >Optimización de Procesos</span
-                        >
-                        <span class="soft-skill-tag">Adaptabilidad</span>
-                        <span class="soft-skill-tag"
-                            >Innovación Dirigida por Investigación</span
-                        >
-                    </div>
-                </div>
-            </div>
+            <section class="sk__panel reveal" style="--reveal-delay:100ms">
+                <h3 class="sk__panel-title">Habilidades blandas</h3>
+                <ul class="soft">
+                    {soft.map((s) => <li class="chip chip--accent">{s}</li>)}
+                </ul>
+            </section>
         </div>
     </div>
 </section>
 
 <style>
-    /* Estilos para los tags de habilidades */
-    .skill-tag,
-    .soft-skill-tag {
-        display: inline-block;
-        padding: 0.3rem 0.75rem;
-        border-radius: 9999px;
-        font-size: 0.875rem;
+    .sk__head { max-width: 46rem; margin-bottom: clamp(2.5rem, 6vw, 3.5rem); }
+
+    .sk__grid { display: grid; gap: 1rem; }
+    @media (min-width: 720px)  { .sk__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1080px) {
+        .sk__grid { grid-template-columns: repeat(6, 1fr); }
+        .sk__card:nth-child(1) { grid-column: span 3; }
+        .sk__card:nth-child(2) { grid-column: span 3; }
+        .sk__card:nth-child(3) { grid-column: span 6; }
+        .sk__card:nth-child(4) { grid-column: span 2; }
+        .sk__card:nth-child(5) { grid-column: span 4; }
+    }
+
+    .sk__card { padding: 1.4rem 1.4rem 1.5rem; }
+    .sk__card-head {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1.1rem;
+    }
+    .sk__icon {
+        display: grid;
+        place-items: center;
+        width: 2.15rem;
+        height: 2.15rem;
+        border-radius: var(--r-sm);
+        background: var(--brand-soft);
+        color: var(--brand-ink);
+        flex: none;
+    }
+    .sk__icon svg { width: 1.15rem; height: 1.15rem; }
+    .sk__card-head h3 {
+        flex: 1;
+        font-size: 0.9375rem;
         font-weight: 600;
-        margin-bottom: 0.5rem;
-        transition: all 0.2s ease;
-        background-color: rgba(var(--ai-accent-cyan), 0.1);
-        border: 1px solid rgba(var(--ai-accent-cyan), 0.4);
-        color: var(--ai-accent-cyan);
-        box-shadow: inset 0 0 0 1px rgba(var(--ai-accent-cyan), 0.2);
+        color: var(--fg);
+        letter-spacing: 0;
     }
-    .skill-tag:hover,
-    .soft-skill-tag:hover {
-        transform: translateY(-1px);
-        box-shadow:
-            inset 0 0 0 1px rgba(var(--primary-ai-blue), 0.6),
-            0 2px 5px rgba(0, 0, 0, 0.3);
-        background-color: rgba(var(--primary-ai-blue), 0.15);
-        color: var(--primary-ai-blue);
-        border-color: rgba(var(--primary-ai-blue), 0.6);
+    .sk__count {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        color: var(--fg-subtle);
+        padding: 0.15rem 0.45rem;
+        border-radius: var(--r-sm);
+        background: var(--glass);
+        border: 1px solid var(--line);
     }
-    .soft-skill-tag {
-        /* Override specific colors for soft skills if needed, using variables */
+    .sk__items {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin: 0;
+        padding: 0;
     }
+
+    /* ---------- Panels ---------- */
+    .sk__split {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    @media (min-width: 900px) { .sk__split { grid-template-columns: 1.25fr 1fr; } }
+
+    .sk__panel {
+        padding: 1.6rem 1.5rem;
+        border: 1px solid var(--line);
+        border-radius: var(--r-lg);
+        background: var(--surface);
+    }
+    .sk__panel-title {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: var(--fg);
+        margin-bottom: 1.2rem;
+        padding-bottom: 0.9rem;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .certs { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+    .cert {
+        display: grid;
+        grid-template-columns: 1.85rem 1fr;
+        gap: 0.85rem;
+        align-items: start;
+    }
+    .cert__badge {
+        display: grid;
+        place-items: center;
+        width: 1.85rem;
+        height: 1.85rem;
+        border-radius: var(--r-sm);
+        border: 1px solid var(--line);
+        background: var(--glass);
+        color: var(--fg-subtle);
+        transition: color var(--dur-base) var(--ease-out),
+                    border-color var(--dur-base) var(--ease-out);
+    }
+    .cert__badge svg { width: 0.95rem; height: 0.95rem; }
+    .cert--featured .cert__badge {
+        color: var(--accent);
+        border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+        background: var(--accent-soft);
+    }
+    .cert__text { display: grid; gap: 0.15rem; }
+    .cert__name { font-size: 0.875rem; font-weight: 500; color: var(--fg); line-height: 1.4; }
+    .cert--featured .cert__name { font-weight: 600; }
+    .cert__issuer {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.06em;
+        color: var(--fg-subtle);
+    }
+
+    .soft {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 0;
+        padding: 0;
+    }
+    .soft .chip { white-space: normal; }
 </style>

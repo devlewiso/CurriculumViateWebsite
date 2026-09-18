@@ -1,89 +1,191 @@
 ---
+const CV_URL = "https://drive.google.com/file/d/1Sb5StgzBUO3deQbTH78lIwBIMB0w7Ucp/view?usp=drive_link";
 
+const channels = [
+    {
+        label: "Email",
+        value: "devlewiso@gmail.com",
+        href: "mailto:devlewiso@gmail.com",
+        external: false,
+        d: "M4 7.5 12 13l8-5.5M5 5.5h14a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-11a1 1 0 0 1 1-1Z",
+    },
+    {
+        label: "LinkedIn",
+        value: "linkedin.com/in/devlewiso",
+        href: "https://linkedin.com/in/devlewiso",
+        external: true,
+        d: "M8 10.5v6M8 7.3v.1M12 16.5v-3.4a2.1 2.1 0 0 1 4.2 0v3.4M4.5 4h15a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-.5.5h-15a.5.5 0 0 1-.5-.5v-15a.5.5 0 0 1 .5-.5Z",
+    },
+    {
+        label: "Curriculum",
+        value: "Descargar PDF",
+        href: CV_URL,
+        external: true,
+        d: "M12 4v10m0 0-3.5-3.5M12 14l3.5-3.5M5 17.5v1A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-1",
+    },
+];
 ---
 
-<section
-    id="contact"
-    class="content-section bg-gradient-to-br from-ai-light-bg to-ai-dark-bg flex items-center justify-center"
->
-    <!-- Contenedor principal para centrar el contenido en el medio de la sección -->
-    <div class="max-w-xl w-full text-center">
-        <!-- Espacio para Imagen de Contacto (Icono Glossy) -->
-        <div
-            class="mb-6 mx-auto w-24 h-24 bg-gradient-to-br from-primary-ai-blue to-ai-accent-cyan rounded-full shadow-xl flex items-center justify-center text-4xl text-white border-2 border-white border-opacity-20"
-        >
-            <svg
-                class="w-12 h-12"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1z"
-                ></path></svg
-            >
-        </div>
+<section id="contact" class="section section--alt contact">
+    <div class="bg-mesh" aria-hidden="true"></div>
 
-        <h3 class="text-3xl font-bold mb-4 text-white">
-            Conversemos sobre Automatización y AI
-        </h3>
-        <p class="text-lg text-text-light mb-8">
-            Si está buscando un Arquitecto de Tecnología que pueda diseñar y
-            construir soluciones autónomas y eficientes, no dude en contactarme.
+    <div class="shell contact__inner">
+        <p class="eyebrow reveal">Contacto</p>
+
+        <h2 class="contact__title reveal" style="--reveal-delay:60ms">
+            Conversemos sobre<br />
+            <span class="contact__title-accent">automatización e IA</span>
+        </h2>
+
+        <p class="contact__lede reveal" style="--reveal-delay:120ms">
+            Si buscas un arquitecto que diseñe y construya sistemas autónomos, eficientes
+            y que se recuperen solos — hablemos. Respondo en menos de 24 horas.
         </p>
 
-        <div class="space-y-4 font-medium text-text-light">
-            <p class="flex items-center justify-center">
-                <svg
-                    class="w-6 h-6 mr-2 text-primary-ai-blue"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    ><path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    ></path></svg
-                >
-                <a
-                    href="mailto:devlewiso@gmail.com"
-                    class="text-ai-accent-cyan hover:underline transition duration-200"
-                    >devlewiso@gmail.com</a
-                >
-            </p>
-            <p class="flex items-center justify-center">
-                <svg
-                    class="w-6 h-6 mr-2 text-primary-ai-blue"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    ><path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.888a1.5 1.5 0 01.196 1.76l-.417.834a.75.75 0 00.196.76l.834.417a1.5 1.5 0 011.76.196l4 4a4 4 0 005.656-5.656l-4-4a4 4 0 00-5.656 0z"
-                    ></path></svg
-                >
-                <a
-                    href="https://linkedin.com/in/devlewiso"
-                    target="_blank"
-                    class="text-ai-accent-cyan hover:underline transition duration-200"
-                    >linkedin.com/in/devlewiso</a
-                >
-            </p>
+        <div class="contact__cta reveal" style="--reveal-delay:180ms">
+            <a href="mailto:devlewiso@gmail.com?subject=Proyecto%20de%20automatizaci%C3%B3n" class="btn btn--primary">
+                Enviar un mensaje
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+                    <path d="M5 12h13M13 6l6 6-6 6" />
+                </svg>
+            </a>
+            <a href={CV_URL} target="_blank" rel="noopener noreferrer" class="btn btn--ghost">Ver CV completo</a>
         </div>
 
-        <a
-            href="#home"
-            class="mt-8 inline-block text-white font-bold py-3 px-6 rounded-lg shadow-xl transition duration-300 glossy-button"
-        >
-            Volver al Inicio
-        </a>
+        <ul class="channels stagger">
+            {channels.map((c, i) => (
+                <li class="reveal" style={`--i:${i}; --reveal-delay:${i * 90}ms`}>
+                    <a
+                        href={c.href}
+                        class="channel card card--hover card--lit"
+                        target={c.external ? "_blank" : undefined}
+                        rel={c.external ? "noopener noreferrer" : undefined}
+                    >
+                        <span class="channel__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d={c.d} />
+                            </svg>
+                        </span>
+                        <span class="channel__text">
+                            <span class="channel__label">{c.label}</span>
+                            <span class="channel__value">{c.value}</span>
+                        </span>
+                        <svg class="channel__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M6 18 18 6M9 6h9v9" />
+                        </svg>
+                    </a>
+                </li>
+            ))}
+        </ul>
     </div>
 </section>
+
+<style>
+    .contact {
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+    .contact__inner { position: relative; z-index: 1; max-width: 52rem; }
+    .contact .eyebrow { justify-content: center; }
+    .contact .eyebrow::after {
+        content: "";
+        width: 1.75rem;
+        height: 1px;
+        background: currentColor;
+        opacity: 0.6;
+    }
+
+    .contact__title {
+        font-size: clamp(2rem, 5.5vw, 3.5rem);
+        font-weight: 700;
+        color: var(--fg);
+    }
+    .contact__title-accent {
+        background: linear-gradient(100deg, var(--grad-a), var(--grad-b));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .contact__lede {
+        margin: 1.5rem auto 0;
+        max-width: 46ch;
+        font-size: clamp(1rem, 1.8vw, 1.125rem);
+        color: var(--fg-muted);
+    }
+
+    .contact__cta {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.875rem;
+        margin-top: 2.25rem;
+    }
+
+    .channels {
+        list-style: none;
+        display: grid;
+        gap: 0.75rem;
+        margin: clamp(3rem, 7vw, 4rem) 0 0;
+        padding: 0;
+        text-align: left;
+    }
+    @media (min-width: 820px) { .channels { grid-template-columns: repeat(3, 1fr); } }
+
+    .channel {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+        padding: 1.05rem 1.15rem;
+        text-decoration: none;
+        height: 100%;
+    }
+    .channel__icon {
+        display: grid;
+        place-items: center;
+        width: 2.35rem;
+        height: 2.35rem;
+        border-radius: var(--r-md);
+        background: var(--brand-soft);
+        color: var(--brand-ink);
+        flex: none;
+        transition: background var(--dur-base) var(--ease-out),
+                    color var(--dur-base) var(--ease-out);
+    }
+    .channel__icon svg { width: 1.2rem; height: 1.2rem; }
+    .channel:hover .channel__icon { background: var(--accent-soft); color: var(--accent); }
+
+    .channel__text { display: grid; gap: 0.1rem; min-width: 0; flex: 1; }
+    .channel__label {
+        font-family: var(--font-mono);
+        font-size: 0.625rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--fg-subtle);
+    }
+    .channel__value {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--fg);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .channel__arrow {
+        width: 0.95rem;
+        height: 0.95rem;
+        color: var(--fg-subtle);
+        flex: none;
+        transition: color var(--dur-base) var(--ease-out),
+                    transform var(--dur-base) var(--ease-out);
+    }
+    .channel:hover .channel__arrow {
+        color: var(--accent);
+        transform: translate(2px, -2px);
+    }
+</style>

@@ -1,124 +1,187 @@
 ---
 import "../styles/global.css";
-import Sidebar from "../components/Sidebar.astro";
-import Home from "../components/Home.astro";
+import Nav from "../components/Nav.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
+import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
 import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
 import Skills from "../components/Skills.astro";
 import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
 import ChatWidget from "../components/ChatWidget.astro";
+
+const title = "Iran Lewis Ortiz — Technology Architect | AI, Automation & Cloud";
+const description =
+    "Arquitecto Tecnológico bilingüe especializado en IA conversacional (Dialogflow CX), automatización con n8n y Python, e infraestructura híbrida HomeLab + Google Cloud.";
 ---
 
-<html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Portafolio Profesional - Iran Lewis Ortiz (AI GLOSSY)</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
-			rel="stylesheet"
-		/>
-	</head>
-	<body class="overflow-hidden">
-		<Sidebar />
-		<main id="contentArea" class="main-content-area">
-			<Home />
-			<About />
-			<Experience />
-			<Projects />
-			<Skills />
-			<Contact />
+<!doctype html>
+<html lang="es" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="author" content="Iran Lewis Ortiz" />
+        <meta name="theme-color" content="#08070f" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#faf9ff" media="(prefers-color-scheme: light)" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="canonical" href="https://iranlewisortiz.com/" />
 
-			<!-- Pie de página (Footer) para asegurar el espacio de scroll final -->
-			<footer
-				class="h-40 bg-gray-900 flex items-center justify-center text-sm text-gray-500"
-			>
-				© 2024 Iran Lewis Ortiz. Portafolio de Arquitectura
-				Tecnológica.
-			</footer>
-		</main>
+        <meta property="og:type" content="profile" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content="https://iranlewisortiz.com/images/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="es_GT" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://iranlewisortiz.com/images/og-image.jpg" />
 
-		<ChatWidget />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        />
 
-		<script>
-			document.addEventListener("DOMContentLoaded", () => {
-				const sidebarItems = document.querySelectorAll(
-					"#sidebar .sidebar-item",
-				);
-				const contentArea = document.getElementById("contentArea");
-				const sections = document.querySelectorAll(".content-section");
+        <!-- Fija el tema antes del primer paint para evitar el flash de color -->
+        <script is:inline>
+            (function () {
+                try {
+                    var saved = localStorage.getItem("theme");
+                    if (saved === "light" || saved === "dark") {
+                        document.documentElement.setAttribute("data-theme", saved);
+                        return;
+                    }
+                } catch (e) {}
+                var prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+                document.documentElement.setAttribute("data-theme", prefersLight ? "light" : "dark");
+            })();
 
-				if (!contentArea) return;
+            // Reveals: sólo ocultamos el estado inicial si este navegador NO soporta
+            // scroll-driven animations (Safari / Firefox) y por tanto usará el
+            // IntersectionObserver. Failsafe: si el observer nunca corre, todo se
+            // muestra igual a los 2.5s — el CV nunca queda en blanco.
+            (function () {
+                var root = document.documentElement;
+                var sda = window.CSS && CSS.supports && CSS.supports("animation-timeline", "view()");
+                var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                if (sda || reduced) return;
+                root.classList.add("sda-fallback");
+                setTimeout(function () { root.classList.add("reveal-all"); }, 2500);
+            })();
+        </script>
+    </head>
 
-				// Función de Scroll Suave
-				sidebarItems.forEach((item) => {
-					item.addEventListener(
-						"click",
-						function (this: HTMLElement, e) {
-							// Solo prevenir el comportamiento por defecto si no es un enlace de descarga externo
-							const isExternalLink =
-								this.getAttribute("target") === "_blank";
-							if (!isExternalLink) {
-								e.preventDefault();
-								const href = this.getAttribute("href");
-								if (href) {
-									const targetId = href.substring(1);
-									const targetElement =
-										document.getElementById(targetId);
+    <body>
+        <a href="#main" class="skip-link">Saltar al contenido</a>
 
-									if (targetElement) {
-										// Usa scrollIntoView para un desplazamiento nativo y suave
-										targetElement.scrollIntoView({
-											behavior: "smooth",
-										});
-									}
-								}
-							}
-						},
-					);
-				});
+        <div class="scroll-progress" aria-hidden="true"></div>
 
-				// Función para activar el elemento del sidebar al hacer scroll
-				const activateSidebarLink = (id: string) => {
-					sidebarItems.forEach((item) => {
-						item.classList.remove("active");
-						if (item.getAttribute("data-section") === id) {
-							item.classList.add("active");
-						}
-					});
-				};
+        <Nav />
+        <ThemeToggle />
 
-				// Detección de la sección visible al hacer scroll
-				contentArea.addEventListener("scroll", () => {
-					let currentActiveSection = "home";
+        <main id="main" class="page">
+            <Hero />
+            <About />
+            <Experience />
+            <Projects />
+            <Skills />
+            <Contact />
+            <Footer />
+        </main>
 
-					// Itera de la última sección a la primera
-					for (let i = sections.length - 1; i >= 0; i--) {
-						const section = sections[i];
-						if (section instanceof HTMLElement) {
-							// El 25% del viewport es suficiente para considerar la sección "visible"
-							const sectionTop = section.offsetTop;
-							const scrollPosition = contentArea.scrollTop;
+        <ChatWidget />
 
-							if (
-								scrollPosition >=
-								sectionTop - window.innerHeight * 0.25
-							) {
-								currentActiveSection = section.id;
-								break;
-							}
-						}
-					}
+        <script>
+            // ── Scroll-spy: marca el ítem de navegación de la sección visible ──
+            const sections = Array.from(
+                document.querySelectorAll<HTMLElement>("main section[id]"),
+            );
+            const navLinks = Array.from(
+                document.querySelectorAll<HTMLAnchorElement>("[data-nav]"),
+            );
 
-					activateSidebarLink(currentActiveSection);
-				});
+            const setActive = (id: string) => {
+                navLinks.forEach((link) => {
+                    const on = link.dataset.nav === id;
+                    link.classList.toggle("is-active", on);
+                    if (on) link.setAttribute("aria-current", "true");
+                    else link.removeAttribute("aria-current");
+                });
+            };
 
-				// Inicialización al cargar la página
-				activateSidebarLink("home");
-			});
-		</script>
-	</body>
+            if (sections.length && navLinks.length) {
+                const spy = new IntersectionObserver(
+                    (entries) => {
+                        const visible = entries
+                            .filter((e) => e.isIntersecting)
+                            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+                        if (visible) setActive(visible.target.id);
+                    },
+                    { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.25, 0.5, 1] },
+                );
+                sections.forEach((s) => spy.observe(s));
+                setActive(sections[0].id);
+            }
+
+            // ── Fallback de reveal para navegadores sin scroll-driven animations ──
+            // (Safari / Firefox). Chromium usa animation-timeline: view() desde el CSS.
+            const supportsSDA =
+                CSS.supports?.("animation-timeline", "view()") ?? false;
+            const reduced = window.matchMedia(
+                "(prefers-reduced-motion: reduce)",
+            ).matches;
+
+            const revealables =
+                document.querySelectorAll<HTMLElement>(".reveal");
+
+            if (reduced) {
+                revealables.forEach((el) => el.classList.add("is-in"));
+                document.documentElement.classList.remove("sda-fallback");
+            } else if (!supportsSDA && revealables.length) {
+                const io = new IntersectionObserver(
+                    (entries, obs) => {
+                        entries.forEach((entry) => {
+                            if (!entry.isIntersecting) return;
+                            entry.target.classList.add("is-in");
+                            obs.unobserve(entry.target); // una sola vez
+                        });
+                    },
+                    { rootMargin: "0px 0px -12% 0px", threshold: 0.08 },
+                );
+                revealables.forEach((el) => io.observe(el));
+            }
+
+            // El estado visible es el default en CSS; el estado oculto sólo existe
+            // mientras html.sda-fallback esté presente. Ver el script inline del <head>.
+        </script>
+
+        <noscript>
+            <style>
+                .reveal, .sda-fallback .reveal { opacity: 1 !important; transform: none !important; }
+            </style>
+        </noscript>
+
+        <style is:global>
+            .skip-link {
+                position: fixed;
+                top: 0.75rem;
+                left: 0.75rem;
+                z-index: 200;
+                padding: 0.65rem 1.1rem;
+                border-radius: var(--r-pill);
+                background: var(--brand);
+                color: var(--on-brand);
+                font-size: 0.875rem;
+                font-weight: 600;
+                text-decoration: none;
+                translate: 0 -200%;
+                transition: translate var(--dur-base) var(--ease-out);
+            }
+            .skip-link:focus-visible { translate: 0 0; }
+        </style>
+    </body>
 </html>

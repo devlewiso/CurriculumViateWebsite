@@ -4,124 +4,97 @@
 
 <button
     id="theme-toggle"
-    class="fixed top-6 right-6 z-50 p-3 rounded-full glossy-card hover:scale-110 transition-transform duration-200 cursor-pointer"
-    title="Cambiar Tema"
+    class="theme-toggle glass"
+    type="button"
+    aria-label="Cambiar tema"
+    title="Cambiar tema"
 >
-    <!-- Sun Icon (Light Mode) -->
-    <svg
-        id="sun-icon"
-        class="w-6 h-6 text-yellow-500 hidden"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-        ></path>
+    <span class="theme-toggle__track" aria-hidden="true">
+        <span class="theme-toggle__thumb"></span>
+    </span>
+    <svg class="theme-toggle__ico theme-toggle__ico--sun" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" />
+        <path d="M12 3v1.5M12 19.5V21M3 12h1.5M19.5 12H21M5.6 5.6l1.1 1.1M17.3 17.3l1.1 1.1M18.4 5.6l-1.1 1.1M6.7 17.3l-1.1 1.1" />
     </svg>
-    <!-- Moon Icon (Dark Mode) -->
-    <svg
-        id="moon-icon"
-        class="w-6 h-6 text-white hidden"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-        ></path>
-    </svg>
-    <!-- Glossy Icon (Glossy Mode) -->
-    <svg
-        id="glossy-icon"
-        class="w-6 h-6 text-cyan-400 hidden"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-        ></path>
+    <svg class="theme-toggle__ico theme-toggle__ico--moon" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20.4 15.4A8.5 8.5 0 0 1 8.6 3.6a8.5 8.5 0 1 0 11.8 11.8Z" />
     </svg>
 </button>
 
-<script>
-    const themeToggle = document.getElementById("theme-toggle");
-    const sunIcon = document.getElementById("sun-icon");
-    const moonIcon = document.getElementById("moon-icon");
-    const glossyIcon = document.getElementById("glossy-icon");
-
-    if (themeToggle && sunIcon && moonIcon && glossyIcon) {
-        // Check for saved theme preference or use system preference
-        const getPreferredTheme = () => {
-            const savedTheme = localStorage.getItem("theme");
-            if (savedTheme) {
-                return savedTheme;
-            }
-            return window.matchMedia("(prefers-color-scheme: dark)").matches
-                ? "dark"
-                : "light";
-        };
-
-        const setTheme = (theme: string) => {
-            document.documentElement.setAttribute("data-theme", theme);
-            localStorage.setItem("theme", theme);
-
-            // Hide all icons first
-            sunIcon.classList.add("hidden");
-            moonIcon.classList.add("hidden");
-            glossyIcon.classList.add("hidden");
-
-            // Show the icon for the NEXT theme (target)
-            // If current is Light, next is Dark -> Show Sun (to switch to Dark? No, standard is show what you switch TO)
-            // Wait, standard toggle:
-            // If in Light mode, show Moon (to switch to Dark).
-            // If in Dark mode, show Sun (to switch to Light).
-
-            // My cycle: Light -> Dark -> Glossy -> Light
-
-            if (theme === "light") {
-                // Current is Light. Next is Dark. Show Moon.
-                moonIcon.classList.remove("hidden");
-            } else if (theme === "dark") {
-                // Current is Dark. Next is Glossy. Show Sparkle.
-                glossyIcon.classList.remove("hidden");
-            } else {
-                // Current is Glossy. Next is Light. Show Sun.
-                sunIcon.classList.remove("hidden");
-            }
-        };
-
-        // Initialize theme
-        setTheme(getPreferredTheme());
-
-        // Toggle theme on click
-        themeToggle.addEventListener("click", () => {
-            const currentTheme =
-                document.documentElement.getAttribute("data-theme");
-
-            let newTheme = "light";
-            if (currentTheme === "light") {
-                newTheme = "dark";
-            } else if (currentTheme === "dark") {
-                newTheme = "glossy";
-            } else {
-                newTheme = "light";
-            }
-
-            setTheme(newTheme);
-        });
+<style>
+    .theme-toggle {
+        position: fixed;
+        top: 1.25rem;
+        right: 1.25rem;
+        z-index: 70;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        min-height: 2.75rem;
+        padding: 0.4rem 0.75rem 0.4rem 0.6rem;
+        border-radius: var(--r-pill);
+        border: 1px solid var(--line);
+        color: var(--fg-muted);
+        cursor: pointer;
+        transition: color var(--dur-base) var(--ease-out),
+                    border-color var(--dur-base) var(--ease-out),
+                    transform var(--dur-base) var(--ease-out);
     }
+    .theme-toggle:hover {
+        color: var(--fg);
+        border-color: var(--line-strong);
+        transform: translateY(-1px);
+    }
+    @media (min-width: 900px) { .theme-toggle { top: 1.5rem; right: 1.75rem; } }
+
+    .theme-toggle__track {
+        position: relative;
+        display: block;
+        width: 1.9rem;
+        height: 1.05rem;
+        border-radius: var(--r-pill);
+        background: var(--line-strong);
+        flex: none;
+    }
+    .theme-toggle__thumb {
+        position: absolute;
+        top: 0.15rem;
+        left: 0.15rem;
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--v-600), var(--c-400));
+        transition: translate var(--dur-base) var(--ease-out);
+    }
+    :root[data-theme="light"] .theme-toggle__thumb { translate: 0.85rem 0; }
+
+    .theme-toggle__ico { width: 1.05rem; height: 1.05rem; flex: none; }
+    .theme-toggle__ico--sun  { display: none; }
+    .theme-toggle__ico--moon { display: block; }
+    :root[data-theme="light"] .theme-toggle__ico--sun  { display: block; }
+    :root[data-theme="light"] .theme-toggle__ico--moon { display: none; }
+</style>
+
+<script>
+    const root = document.documentElement;
+    const btn = document.getElementById("theme-toggle");
+
+    const apply = (theme: string) => {
+        root.setAttribute("data-theme", theme);
+        btn?.setAttribute("aria-label", theme === "dark" ? "Activar tema claro" : "Activar tema oscuro");
+        try {
+            localStorage.setItem("theme", theme);
+        } catch {
+            /* modo privado: la preferencia no persiste, el tema igual se aplica */
+        }
+    };
+
+    // El tema inicial ya lo fija el script inline de <head> (evita FOUC).
+    apply(root.getAttribute("data-theme") || "dark");
+
+    btn?.addEventListener("click", () => {
+        apply(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
+    });
 </script>
