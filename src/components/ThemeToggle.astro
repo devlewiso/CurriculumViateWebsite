@@ -4,7 +4,7 @@
 
 <button
     id="theme-toggle"
-    class="theme-toggle glass"
+    class="theme-toggle"
     type="button"
     aria-label="Cambiar tema"
     title="Cambiar tema"
@@ -24,30 +24,27 @@
 </button>
 
 <style>
+    /* Vive dentro de .topnav__actions (Nav.astro) — sin posición propia, fluye en el flex. */
     .theme-toggle {
-        position: fixed;
-        top: 1.25rem;
-        right: 1.25rem;
-        z-index: 70;
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        min-height: 2.75rem;
-        padding: 0.4rem 0.75rem 0.4rem 0.6rem;
+        flex: none;
+        min-height: 2.35rem;
+        padding: 0.35rem 0.65rem 0.35rem 0.55rem;
         border-radius: var(--r-pill);
         border: 1px solid var(--line);
         color: var(--fg-muted);
         cursor: pointer;
         transition: color var(--dur-base) var(--ease-out),
                     border-color var(--dur-base) var(--ease-out),
-                    transform var(--dur-base) var(--ease-out);
+                    background var(--dur-base) var(--ease-out);
     }
     .theme-toggle:hover {
         color: var(--fg);
         border-color: var(--line-strong);
-        transform: translateY(-1px);
+        background: var(--glass-hover);
     }
-    @media (min-width: 900px) { .theme-toggle { top: 1.5rem; right: 1.75rem; } }
 
     .theme-toggle__track {
         position: relative;

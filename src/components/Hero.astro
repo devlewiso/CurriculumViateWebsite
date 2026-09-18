@@ -109,7 +109,10 @@ const stack = ["Google Cloud", "Dialogflow CX", "n8n", "Proxmox VE", "Docker", "
 
 <style>
     .hero {
-        min-height: 100svh;
+        /* El navbar ahora vive en el flujo normal (sticky, no fixed), así que
+           resta su altura para que el Hero siga llenando exactamente la
+           primera pantalla en vez de empujar el "scroll hint" fuera de vista. */
+        min-height: calc(100svh - var(--nav-h));
         display: flex;
         align-items: center;
         overflow: hidden;

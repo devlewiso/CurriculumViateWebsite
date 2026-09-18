@@ -20,7 +20,7 @@
     --n-800: #1a1826;  --n-850: #14121f;  --n-900: #0e0d18;  --n-950: #08070f;
 
     /* ---------- Layer 3: Component / system tokens ---------- */
-    --rail-w: 5.5rem;
+    --nav-h: 4.25rem;
     --shell-max: 76rem;
     --gutter: clamp(1.25rem, 5vw, 4rem);
 
@@ -148,7 +148,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: calc(var(--nav-h) + 1rem); /* compensa el navbar sticky */
     -webkit-text-size-adjust: 100%;
 }
 
@@ -205,17 +205,16 @@ img, svg { max-width: 100%; }
 }
 
 .page {
-    margin-left: 0;
     padding-bottom: 5.5rem; /* clears mobile tab bar */
 }
 @media (min-width: 900px) {
-    .page { margin-left: var(--rail-w); padding-bottom: 0; }
+    .page { padding-bottom: 0; } /* desktop nav is a top bar, no tab bar to clear */
 }
 
 .section {
     position: relative;
     padding-block: clamp(5rem, 12vh, 9rem);
-    scroll-margin-top: 2rem;
+    scroll-margin-top: calc(var(--nav-h) + 0.5rem);
 }
 .section--alt { background: var(--bg-alt); }
 .section + .section { border-top: 1px solid var(--line); }
