@@ -1,0 +1,10 @@
+// Sitio Astro servido por Cloudflare Workers como assets estáticos (migrado desde Netlify).
+// Deploy: npx wrangler deploy (corre el build antes de subir)
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "mycvileto",
+  "compatibility_date": "2026-09-01",
+  "build": { "command": "npm run build" },
+  "assets": { "directory": "./dist", "not_found_handling": "404-page" },
+  "routes": [{ "pattern": "mycven.neuralcodelab.com", "custom_domain": true }]
+}
