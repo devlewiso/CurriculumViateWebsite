@@ -1,13 +1,13 @@
 ---
-const CV_URL = "https://drive.google.com/file/d/1Sb5StgzBUO3deQbTH78lIwBIMB0w7Ucp/view?usp=drive_link";
+import { CV_PDF as CV_URL, persona } from "../data/cv";
 
 const stats = [
-    { value: "3+",  label: "Años en BPO financiero & automatización" },
-    { value: "15%", label: "Reducción de errores manuales" },
-    { value: "20+", label: "Servicios self-hosted orquestados" },
+    { value: "4+",  label: "Años en análisis, QA y automatización" },
+    { value: "15%", label: "Menos errores manuales en procesos fiscales" },
+    { value: "C1",  label: "Inglés avanzado con equipos de Canadá y EE. UU." },
 ];
 
-const stack = ["Google Cloud", "Dialogflow CX", "n8n", "Proxmox VE", "Docker", "Python", "Twilio"];
+const stack = ["LangGraph", "LangChain", "n8n", "TypeScript", "Python", "Supabase", "Docker", "Google Cloud"];
 ---
 
 <section id="home" class="section hero">
@@ -23,7 +23,7 @@ const stack = ["Google Cloud", "Dialogflow CX", "n8n", "Proxmox VE", "Docker", "
     <div class="shell hero__inner hero-parallax">
         <p class="badge-live">
             <span class="dot" aria-hidden="true"></span>
-            Disponible para proyectos
+            Abierto a proyectos
         </p>
 
         <h1 class="hero__name">
@@ -31,15 +31,16 @@ const stack = ["Google Cloud", "Dialogflow CX", "n8n", "Proxmox VE", "Docker", "
         </h1>
 
         <p class="hero__role">
-            Technology Architect
+            {persona.rol} · Layer 3 en <strong class="hero__role-org">TELUS</strong>
             <span class="hero__role-sep" aria-hidden="true">/</span>
-            <span class="hero__role-em">AI, Automation &amp; Cloud Integration</span>
+            <span class="hero__role-em">{persona.especialidad}</span>
         </p>
 
         <p class="hero__lede">
-            Diseño sistemas que se operan solos. Integro entornos <strong>HomeLab</strong> con
-            <strong>Google Cloud</strong>, orquesto IA conversacional con <strong>Dialogflow CX</strong>
-            y construyo automatizaciones auto-reparables dirigidas por datos.
+            Investigo incidentes complejos, valido sistemas con <strong>QA, UAT y AI Testing</strong>
+            y diseño flujos con agentes en <strong>LangGraph</strong>. Fuera del trabajo construyo
+            software propio de punta a punta: <strong>Clipmill</strong>, un framework open source de video
+            con React, y automatizaciones con <strong>n8n y LLMs</strong> que corren solas.
         </p>
 
         <div class="hero__actions">
@@ -177,6 +178,7 @@ const stack = ["Google Cloud", "Dialogflow CX", "n8n", "Proxmox VE", "Docker", "
     }
     .hero__role-sep { color: var(--brand); margin-inline: 0.5rem; }
     .hero__role-em { color: var(--accent); }
+    .hero__role-org { color: var(--fg); font-weight: 600; }
 
     .hero__lede {
         margin: 1.75rem 0 0;

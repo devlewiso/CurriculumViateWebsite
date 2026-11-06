@@ -1,5 +1,5 @@
 ---
-const CV_URL = "https://drive.google.com/file/d/1Sb5StgzBUO3deQbTH78lIwBIMB0w7Ucp/view?usp=drive_link";
+import { CV_PDF as CV_URL, persona } from "../data/cv";
 
 const channels = [
     {
@@ -15,6 +15,20 @@ const channels = [
         href: "https://linkedin.com/in/devlewiso",
         external: true,
         d: "M8 10.5v6M8 7.3v.1M12 16.5v-3.4a2.1 2.1 0 0 1 4.2 0v3.4M4.5 4h15a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-.5.5h-15a.5.5 0 0 1-.5-.5v-15a.5.5 0 0 1 .5-.5Z",
+    },
+    {
+        label: "GitHub",
+        value: "github.com/devlewiso",
+        href: persona.github,
+        external: true,
+        d: "M9 19c-4 1.3-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 2.8 5.8 3.1 5.8 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21",
+    },
+    {
+        label: "YouTube",
+        value: "@devlewiso",
+        href: persona.youtube,
+        external: true,
+        d: "M3.5 8.2c.1-1.4 1.2-2.5 2.6-2.6C8 5.4 10 5.3 12 5.3s4 .1 5.9.3c1.4.1 2.5 1.2 2.6 2.6.2 2.5.2 5.1 0 7.6-.1 1.4-1.2 2.5-2.6 2.6-1.9.2-3.9.3-5.9.3s-4-.1-5.9-.3c-1.4-.1-2.5-1.2-2.6-2.6-.2-2.5-.2-5.1 0-7.6ZM10 9.3v5.4l4.6-2.7L10 9.3Z",
     },
     {
         label: "Curriculum",
@@ -38,8 +52,8 @@ const channels = [
         </h2>
 
         <p class="contact__lede reveal" style="--reveal-delay:120ms">
-            Si buscas un arquitecto que diseñe y construya sistemas autónomos, eficientes
-            y que se recuperen solos — hablemos. Respondo en menos de 24 horas.
+            Si necesitás analizar un sistema, automatizar un proceso o construir una herramienta
+            con IA de punta a punta, hablemos. Respondo en menos de 24 horas.
         </p>
 
         <div class="contact__cta reveal" style="--reveal-delay:180ms">
@@ -134,7 +148,8 @@ const channels = [
         padding: 0;
         text-align: left;
     }
-    @media (min-width: 820px) { .channels { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 640px) { .channels { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 900px) { .channels { grid-template-columns: repeat(3, 1fr); } }
 
     .channel {
         display: flex;

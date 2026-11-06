@@ -1,18 +1,18 @@
 ---
 const pillars = [
     {
-        title: "Orquestación de IA",
-        body: "Diseño de agentes e intents en Dialogflow CX, flujos omnicanal y capas de decisión que conectan LLMs con sistemas reales.",
+        title: "Análisis y validación",
+        body: "Layer 3 en TELUS: investigo incidentes, valido flujos end-to-end con QA/UAT y uso agentes en LangGraph para generar escenarios de prueba y resumir evidencia.",
         d: "M12 3.5a3 3 0 0 1 3 3v.6a3 3 0 0 1 2.6 4.4 3 3 0 0 1-2.6 4.4v.6a3 3 0 0 1-6 0v-.6A3 3 0 0 1 6.4 11.5 3 3 0 0 1 9 7.1V6.5a3 3 0 0 1 3-3ZM12 8v8M9.5 10.5h5",
     },
     {
-        title: "Automatización de procesos",
-        body: "n8n, Python y Apps Script para eliminar trabajo manual. En Capgemini esto significó 15% menos errores en procesos fiscales.",
+        title: "Automatización con IA",
+        body: "n8n, Python y LLMs para eliminar trabajo manual: fábricas de contenido que se publican solas y, en Capgemini, 15 % menos errores en procesos fiscales.",
         d: "M10.3 4.5h3.4l.4 2.2 1.9 1.1 2.1-.9 1.7 3-1.7 1.5v2.2l1.7 1.5-1.7 3-2.1-.9-1.9 1.1-.4 2.2h-3.4l-.4-2.2-1.9-1.1-2.1.9-1.7-3L4 15.6v-2.2L2.3 11.9l1.7-3 2.1.9 1.9-1.1.3-2.2ZM12 14.4a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8Z",
     },
     {
-        title: "Infraestructura híbrida",
-        body: "Proxmox VE + CasaOS en local, Google Cloud arriba. Alta disponibilidad, monitoreo con Prometheus y recuperación autónoma.",
+        title: "Producto de punta a punta",
+        body: "Diseño, programo y despliego: TypeScript, React, Supabase y Vercel/Cloudflare en la nube; Docker y Proxmox en mi HomeLab.",
         d: "M6.5 18.5A3.5 3.5 0 0 1 6 11.6a5 5 0 0 1 9.6-1.4 3.9 3.9 0 0 1 .9 7.7M12 21v-7m0 0-2.2 2.2M12 14l2.2 2.2",
     },
 ];
@@ -23,66 +23,68 @@ const pillars = [
         <div class="about__copy">
             <p class="eyebrow reveal">Resumen profesional</p>
             <h2 class="section-title reveal" style="--reveal-delay:60ms">
-                Construyo sistemas<br />que se operan solos.
+                Analizo sistemas<br />y construyo los que se operan solos.
             </h2>
 
             <div class="about__prose reveal" style="--reveal-delay:120ms">
                 <p>
-                    Soy <strong>Arquitecto Tecnológico bilingüe</strong> (español / inglés) con
-                    experiencia práctica en automatización, infraestructura e inteligencia
-                    artificial conversacional.
+                    Soy <strong>Business Systems Analyst Layer 3 en TELUS</strong>, bilingüe
+                    (español / inglés C1). Investigo incidentes complejos, valido el comportamiento
+                    de los sistemas y trabajo con <strong>AI Testing</strong>, LangGraph y LangChain.
                 </p>
                 <p>
-                    Mi especialización es el <strong>diseño de soluciones híbridas</strong>: entornos
-                    locales autogestionados que conversan con servicios en la nube a través de APIs
-                    y frameworks como Dialogflow CX, Twilio y n8n.
+                    Fuera del trabajo construyo <strong>software propio de punta a punta</strong>:
+                    Clipmill, un framework open source de video con React; Sarao, una plataforma de
+                    eventos con IA en producción; y automatizaciones con n8n y LLMs que producen y
+                    publican contenido solas.
                 </p>
                 <p>
-                    Trabajo en la intersección entre el desarrollo de software, la automatización
-                    robusta y la gestión de infraestructura — con el objetivo de que los sistemas
-                    detecten, decidan y se recuperen sin intervención humana.
+                    Vengo del análisis financiero en Capgemini, donde empecé a automatizar con Python
+                    y VBA. Hoy combino análisis de sistemas, automatización e IA para que los procesos
+                    se validen, se midan y se corrijan solos.
                 </p>
             </div>
         </div>
 
         <!-- Diagrama de arquitectura híbrida (reemplaza el placeholder anterior) -->
         <figure class="diagram card reveal" style="--reveal-delay:180ms">
-            <figcaption class="diagram__cap">Arquitectura híbrida — flujo operativo</figcaption>
+            <figcaption class="diagram__cap">Cómo armo mis sistemas</figcaption>
 
             <div class="diagram__layer" data-tier="cloud">
-                <span class="diagram__tier">Cloud</span>
+                <span class="diagram__tier">IA</span>
                 <div class="diagram__nodes">
-                    <span class="node node--brand">Google Cloud</span>
+                    <span class="node node--brand">LangGraph</span>
+                    <span class="node node--brand">Claude / LLMs</span>
                     <span class="node node--brand">Dialogflow CX</span>
-                    <span class="node node--brand">Twilio</span>
                 </div>
             </div>
 
             <div class="diagram__link" aria-hidden="true"><span></span></div>
 
             <div class="diagram__layer" data-tier="orchestration">
-                <span class="diagram__tier">Orquestación</span>
+                <span class="diagram__tier">Orquestación y apps</span>
                 <div class="diagram__nodes">
                     <span class="node node--accent">n8n</span>
-                    <span class="node node--accent">REST APIs</span>
+                    <span class="node node--accent">TypeScript</span>
                     <span class="node node--accent">Python</span>
+                    <span class="node node--accent">Supabase</span>
                 </div>
             </div>
 
             <div class="diagram__link" aria-hidden="true"><span></span></div>
 
             <div class="diagram__layer" data-tier="local">
-                <span class="diagram__tier">HomeLab</span>
+                <span class="diagram__tier">Infraestructura</span>
                 <div class="diagram__nodes">
                     <span class="node">Proxmox VE</span>
                     <span class="node">Docker</span>
-                    <span class="node">Home Assistant</span>
+                    <span class="node">Vercel / Cloudflare</span>
                     <span class="node">Prometheus</span>
                 </div>
             </div>
 
             <p class="diagram__note">
-                Detecta &rarr; decide &rarr; remedia &rarr; verifica &rarr; registra
+                Analiza &rarr; automatiza &rarr; valida &rarr; mide &rarr; mejora
             </p>
         </figure>
     </div>

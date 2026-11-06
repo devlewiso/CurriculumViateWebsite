@@ -1,42 +1,27 @@
 ---
+import { experiencia, educacion } from "../data/cv";
+
 const roles = [
-    {
-        period: "Mar 2023 — Presente",
-        current: true,
-        title: "Tax Analyst / Portfolio Specialist & VDI Tester",
-        org: "Capgemini · División BPO Financiero",
-        place: "Guatemala / Remoto",
-        bullets: [
-            "Revisión de certificados de exención de impuestos de EE. UU. asegurando el cumplimiento normativo.",
-            "Lideré proyectos de estandarización de procesos que redujeron errores manuales en un 15%.",
-            "Desarrollo de scripts de automatización con Python, Excel VBA y Google Workspace.",
-            "Testing funcional en entornos VDI Windows 11 Citrix, validando rendimiento y flujos de automatización.",
-        ],
-        tags: ["Python", "Excel VBA", "Google Workspace", "VDI / Citrix"],
-    },
-    {
-        period: "Jul 2022 — Feb 2023",
+    ...experiencia.map((r) => ({
+        period: r.periodo,
+        current: !!r.actual,
+        title: r.puesto,
+        org: r.empresa,
+        place: r.lugar,
+        bullets: r.logros,
+        tags: r.tags,
+        education: false,
+    })),
+    ...educacion.map((e) => ({
+        period: e.periodo,
         current: false,
-        title: "Collections Analyst",
-        org: "Capgemini · División BPO Financiero",
-        place: "Guatemala / Remoto",
-        bullets: [
-            "Gestión de cobros para clientes financieros, superando consistentemente los objetivos mensuales de recuperación.",
-            "Diseño y documentación de estrategias de mejora de procesos basadas en análisis de KPI.",
-            "Aseguramiento del cumplimiento de normativas internas y externas.",
-        ],
-        tags: ["Análisis de KPI", "Compliance", "Mejora de procesos"],
-    },
-    {
-        period: "Esperado 2025",
-        current: false,
-        title: "Licenciatura en Tecnología y Administración de Telecomunicaciones",
-        org: "Universidad Galileo",
-        place: "Guatemala",
+        title: e.titulo,
+        org: e.lugar,
+        place: "Educación",
         bullets: [],
         tags: [],
         education: true,
-    },
+    })),
 ];
 ---
 
@@ -46,7 +31,7 @@ const roles = [
             <p class="eyebrow reveal">Trayectoria</p>
             <h2 class="section-title reveal" style="--reveal-delay:60ms">Experiencia profesional</h2>
             <p class="section-lede reveal" style="--reveal-delay:120ms">
-                Del análisis financiero a la arquitectura de sistemas: cada rol añadió una capa
+                Del análisis financiero al análisis de sistemas con IA: cada rol añadió una capa
                 de automatización sobre procesos que antes eran manuales.
             </p>
         </header>
