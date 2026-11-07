@@ -23,7 +23,7 @@ export const persona = {
 };
 
 export const resumen =
-    "Arquitecto de soluciones de IA con más de 4 años en automatización y procesos de negocio; el último, en TELUS, diseñando y llevando a producción IA conversacional y sistemas multiagente: la integración Genesys Cloud → Dialogflow CX → APIs, un agente de pruebas en LangGraph, una flota de agentes con MCP y A2A, y las reglas de uso de modelos según la sensibilidad de los datos. Fuera del trabajo construyo software propio de punta a punta: Clipmill, un framework open source de video con React; Sarao, una plataforma de eventos con IA; y automatizaciones con n8n y LLMs. Mi regla: el código decide y el LLM explica, con la seguridad de los datos primero.";
+    "Arquitecto de soluciones de IA con 2 años diseñando sistemas de IA (desde nov 2024 en plataformas propias y, el último año, en producción en TELUS) y más de 4 en automatización y procesos de negocio. En TELUS diseñé y llevé a producción IA conversacional y sistemas multiagente: la integración Genesys Cloud → Dialogflow CX → APIs, un agente de pruebas en LangGraph, una flota de agentes con MCP y A2A, y las reglas de uso de modelos según la sensibilidad de los datos. Fuera del trabajo construyo software propio de punta a punta: Clipmill, un framework open source de video con React; Sarao, una plataforma de eventos con IA; y automatizaciones con n8n y LLMs. Mi regla: el código decide y el LLM explica, con la seguridad de los datos primero.";
 
 export type Rol = {
     periodo: string;
@@ -51,6 +51,19 @@ export const experiencia: Rol[] = [
             "Definí la guía de modelos según la sensibilidad de los datos (PII solo en modelos alojados en Canadá) y habilité al equipo con guías y skills de Claude Code.",
         ],
         tags: ["Dialogflow CX", "Genesys Cloud", "LangGraph", "BigQuery", "MCP / A2A", "React"],
+    },
+    {
+        periodo: "Nov 2024 — Presente",
+        puesto: "Arquitecto de Soluciones de IA · Independiente",
+        empresa: "NeuralCodeLab · proyectos propios",
+        lugar: "Guatemala / Remoto",
+        logros: [
+            "Diseño y opero mi propia plataforma de IA self-hosted: LLMs locales con Ollama en GPU, orquestación con n8n, trazas y costos con Langfuse, todo en Docker/Proxmox con acceso por Cloudflare Tunnels.",
+            "Clipmill: framework de video con React escrito desde cero (renderer con Chrome headless + ffmpeg, cola de render persistente, motor de flujos tipo n8n) con pipelines LLM → voz → render → publicación.",
+            "Sarao: planificador de eventos que convierte texto libre en un plan con Claude Haiku y respaldo por reglas; auth del lado del servidor, RLS y CAPTCHA (Next.js + Supabase).",
+            "Pipelines de contenido con aprobación humana antes de publicar (Telegram) y una fábrica de Shorts con IA a menos de 0.40 USD por video.",
+        ],
+        tags: ["Ollama", "n8n", "Langfuse", "Docker", "Claude API", "Cloudflare Workers"],
     },
     {
         periodo: "Mar 2023 — Dic 2025",

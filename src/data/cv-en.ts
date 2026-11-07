@@ -19,7 +19,7 @@ export const persona = {
 };
 
 export const resumen =
-    "AI solutions architect with 4+ years in automation and business processes; the last one at TELUS designing and shipping conversational AI and multi-agent systems to production: the Genesys Cloud → Dialogflow CX → APIs integration, a LangGraph testing agent, an agent fleet over MCP and A2A, and model-usage rules based on data sensitivity. Outside of work I build my own software end to end: Clipmill, an open-source React video framework; Sarao, an AI-powered event planning platform; and automations with n8n and LLMs. My rule: code decides, the LLM explains, and data security comes first.";
+    "AI solutions architect with 2 years designing AI systems (independent platforms since Nov 2024, and the last year in production at TELUS) and 4+ years in automation and business processes. At TELUS I designed and shipped conversational AI and multi-agent systems to production: the Genesys Cloud → Dialogflow CX → APIs integration, a LangGraph testing agent, an agent fleet over MCP and A2A, and model-usage rules based on data sensitivity. Outside of work I build my own software end to end: Clipmill, an open-source React video framework; Sarao, an AI-powered event planning platform; and automations with n8n and LLMs. My rule: code decides, the LLM explains, and data security comes first.";
 
 export const experiencia: Rol[] = [
     {
@@ -37,6 +37,19 @@ export const experiencia: Rol[] = [
             "Defined model-selection guidelines by data sensitivity (PII only on Canada-hosted models) and enabled the team with Claude Code guides and skills.",
         ],
         tags: ["Dialogflow CX", "Genesys Cloud", "LangGraph", "BigQuery", "MCP / A2A", "React"],
+    },
+    {
+        periodo: "Nov 2024 — Present",
+        puesto: "AI Solutions Architect · Independent",
+        empresa: "NeuralCodeLab · own projects",
+        lugar: "Guatemala / Remote",
+        logros: [
+            "I design and run my own self-hosted AI platform: local LLMs with Ollama on GPU, orchestration with n8n, traces and cost tracking with Langfuse, all on Docker/Proxmox with access through Cloudflare Tunnels.",
+            "Clipmill: a React video framework written from scratch (Chrome headless + ffmpeg renderer, persistent render queue, n8n-style flow engine) with LLM → voice → render → publish pipelines.",
+            "Sarao: an event planner that turns free text into a plan with Claude Haiku and a rule-based fallback; server-side auth, RLS and CAPTCHA (Next.js + Supabase).",
+            "Content pipelines with human approval before publishing (Telegram) and an AI Shorts factory at under USD 0.40 per video.",
+        ],
+        tags: ["Ollama", "n8n", "Langfuse", "Docker", "Claude API", "Cloudflare Workers"],
     },
     {
         periodo: "Mar 2023 — Dec 2025",
