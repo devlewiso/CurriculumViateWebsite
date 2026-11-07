@@ -21,7 +21,7 @@ export const persona = {
 };
 
 export const resumen =
-    "Business Systems Analyst Layer 3 en TELUS, con experiencia en soporte avanzado de aplicaciones, QA/UAT y AI Testing con LangGraph y LangChain. Fuera del trabajo construyo software propio de punta a punta: un framework open source de video con React (Clipmill), una plataforma de eventos con IA en producción (Sarao), fábricas de contenido automatizadas con n8n y LLMs, e infraestructura self-hosted. Combino análisis de sistemas, automatización e IA para que los procesos se validen, se midan y se corrijan solos.";
+    "Business Systems Analyst en TELUS (Business Customer Experience), donde soy el puente entre la operación de contact center y la ingeniería de IA: llevo bots conversacionales con Dialogflow CX y Genesys a los canales del cliente, mido su calidad con datos reales de llamadas y construyo agentes que automatizan el análisis y las pruebas del equipo. Fuera del trabajo construyo software propio de punta a punta: Clipmill, un framework open source de video con React; Sarao, una plataforma de eventos con IA; y automatizaciones con n8n y LLMs. Mi regla: el código decide y el LLM explica, con la seguridad de los datos primero.";
 
 export type Rol = {
     periodo: string;
@@ -37,17 +37,18 @@ export const experiencia: Rol[] = [
     {
         periodo: "Dic 2025 — Presente",
         actual: true,
-        puesto: "Business Systems Analyst — Layer 3",
-        empresa: "TELUS",
+        puesto: "Business Systems Analyst · Tech Lead CCAI",
+        empresa: "TELUS · Business Customer Experience",
         lugar: "Canadá / Remoto",
         logros: [
-            "Soporte y análisis de aplicaciones en Layer 3: investigo incidentes complejos, valido el comportamiento del sistema y coordino hallazgos con equipos técnicos y de negocio.",
-            "Ejecuto QA y UAT, análisis funcional y validación de flujos end-to-end; detecto defectos, regresiones y riesgos operativos.",
-            "Uso herramientas de AI Testing y frameworks como LangGraph y LangChain para automatizar evaluaciones, generar escenarios de prueba y apoyar flujos predictivos.",
-            "Diseño y pruebo flujos basados en agentes que analizan casos, orquestan herramientas, resumen evidencia y aceleran la investigación técnica.",
-            "Documento causas probables, criterios de aceptación y recomendaciones técnicas para la mejora continua.",
+            "Tech Lead (CCAI BSA) de la integración de WhatsApp para clientes Business: Genesys Cloud → Dialogflow CX → APIs de TELUS, en inglés y francés, con handoff a agentes humanos. Definí la estrategia de pruebas, los casos de UAT y las user stories.",
+            "Construí un agente de pruebas en LangGraph (11 nodos) que corre los escenarios del equipo contra 4 bots de Dialogflow CX en dos ambientes, valida con código determinístico (el LLM solo narra el veredicto) y entrega reportes en HTML, con su propio frontend en React/TypeScript.",
+            "Creé un pipeline de calidad que convierte los QA scores de llamadas reales en benchmarks por tema, patrones de mejora y propuestas para el roadmap; lo presenté al equipo core de CCAI.",
+            "Extraje desde BigQuery muestras de llamadas con transcripción enmascarada (PII) para comparar conversaciones exitosas y fallidas de los bots de voz.",
+            "Diseñé la flota de agentes del equipo: un agente principal que consulta a cuatro copilots por A2A, un servidor MCP y una CLI con lista blanca y registro de auditoría.",
+            "Definí la guía de modelos según la sensibilidad de los datos (PII solo en modelos alojados en Canadá) y habilité al equipo con guías y skills de Claude Code.",
         ],
-        tags: ["Layer 3", "QA / UAT", "AI Testing", "LangGraph", "LangChain"],
+        tags: ["Dialogflow CX", "Genesys Cloud", "LangGraph", "BigQuery", "MCP / A2A", "React"],
     },
     {
         periodo: "Mar 2023 — Dic 2025",
@@ -176,11 +177,11 @@ export const automatizaciones: Proyecto[] = [
 ];
 
 export const habilidades = [
-    { grupo: "Análisis & QA", items: ["Business Systems Analysis", "Application Support L3", "QA / UAT", "AI Testing", "Análisis funcional", "Criterios de aceptación"] },
-    { grupo: "IA & Automatización", items: ["LangGraph", "LangChain", "Claude API", "Agentes con herramientas", "Dialogflow CX / ES", "n8n", "Twilio"] },
+    { grupo: "Análisis & QA", items: ["Business Systems Analysis", "QA / UAT", "AI Testing", "Estrategia de pruebas", "User stories", "Métricas de contact center (NPS, FCR, AHT, contención)"] },
+    { grupo: "IA & Automatización", items: ["Dialogflow CX", "Genesys Cloud CX", "LangGraph", "LangChain", "MCP", "A2A", "Claude Code", "Claude / Gemini / GPT", "n8n", "Apps Script", "Twilio"] },
     { grupo: "Desarrollo", items: ["TypeScript", "JavaScript", "Python", "React", "Next.js", "Astro", "Node.js", "SQL", "REST APIs", "Excel VBA"] },
-    { grupo: "Datos & Cloud", items: ["Supabase", "Postgres", "Google Cloud", "Vercel", "Cloudflare Workers"] },
-    { grupo: "Infraestructura & Ops", items: ["Linux", "Docker", "Proxmox VE", "Prometheus", "Cloudflare Tunnels", "Git / GitHub", "VDI (Win 11 Citrix)"] },
+    { grupo: "Datos & Cloud", items: ["BigQuery", "Supabase", "Postgres", "Google Cloud", "Vercel", "Cloudflare Workers"] },
+    { grupo: "Infraestructura & Ops", items: ["Linux", "Docker", "Proxmox VE", "Prometheus", "Git / GitHub", "Postman", "Privacidad de datos (PIPEDA, enmascaramiento de PII)", "Secretos fuera del código"] },
 ];
 
 export const certificaciones = [
