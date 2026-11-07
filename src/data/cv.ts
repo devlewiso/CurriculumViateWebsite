@@ -2,7 +2,9 @@
 // (de donde sale public/cv.pdf con `npm run cv:pdf`). Cambiá los datos aquí, no en los componentes.
 
 export const SITE_URL = "https://mycven.neuralcodelab.com";
-export const CV_PDF = "/cv.pdf";
+// Los PDF viven en Google Drive (carpeta CV). Se generan con `npm run cv:pdf` → pdf/.
+export const CV_PDF = "https://drive.google.com/file/d/1OLhNYfoH28kXnX0TSSfFQyXdkni3w5_k/view?usp=sharing";
+export const CV_PDF_EN = "https://drive.google.com/file/d/1qzCyuqj2s35TT34qwnlgiizVYvdEh0-1/view?usp=sharing";
 
 export const persona = {
     nombre: "Iran Lewis Ortiz",

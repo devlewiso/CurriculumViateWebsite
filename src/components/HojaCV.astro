@@ -1,0 +1,155 @@
+---
+// Hoja A4 del CV con el formato del CV en LaTeX. La usan /cv (español) y /en/cv (inglés);
+// de ahí salen los PDF con `npm run cv:pdf`.
+interface Props { d: any; lang: "es" | "en" }
+const { d, lang } = Astro.props;
+const { persona, resumen, experiencia, educacion, destacado, proyectos, automatizaciones, habilidades, certificaciones, SITE_URL } = d;
+
+const T = {
+    es: { resumen: "Resumen Profesional", exp: "Experiencia Profesional", proy: "Proyectos de Software e IA", edu: "Educación", cert: "Certificaciones", hab: "Habilidades", idiomas: "Idiomas", titulo: "CV" },
+    en: { resumen: "Professional Summary", exp: "Professional Experience", proy: "Software & AI Projects", edu: "Education", cert: "Certifications", hab: "Skills", idiomas: "Languages", titulo: "Resume" },
+}[lang];
+
+const sinProtocolo = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "");
+const seleccion = proyectos.slice(0, 5);
+// La fecha de una certificación viene después del «·» del emisor (ej. «Capgemini · Dic 2024»).
+const fechaCert = (emisor: string) => (emisor.includes("·") ? ` – ${emisor.split("·")[1].trim()}` : "");
+---
+
+
+<!doctype html>
+<html lang={lang}>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{persona.nombre} — {T.titulo}</title>
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={`${SITE_URL}${lang === "en" ? "/en" : ""}/cv`} />
+</head>
+<body>
+<main class="hoja">
+    <header class="cab">
+        <h1><b>{persona.nombre}</b> | {persona.rol}</h1>
+        <p class="sub">{persona.especialidad}</p>
+        <p class="contacto">
+            {persona.ubicacion} •
+            <a href={`mailto:${persona.email}`}>{persona.email}</a> •
+            <a href={persona.linkedin}>{sinProtocolo(persona.linkedin)}</a> •
+            <a href={persona.github}>{sinProtocolo(persona.github)}</a> •
+            <a href={SITE_URL}>{sinProtocolo(SITE_URL)}</a>
+        </p>
+    </header>
+
+    <section>
+        <h2>{T.resumen}</h2>
+        <p class="parrafo">{resumen}</p>
+    </section>
+
+    <section>
+        <h2>{T.exp}</h2>
+        {experiencia.map((r) => (
+            <div class="entrada">
+                <p class="empresa">{r.empresa}</p>
+                <p class="fila"><i>{r.puesto}, {r.lugar}</i><i>{r.periodo.replace("—", "–")}</i></p>
+                <ul>{r.logros.map((l) => <li>{l}</li>)}</ul>
+            </div>
+        ))}
+    </section>
+
+    <section>
+        <h2>{T.proy}</h2>
+        <p class="proy">
+            <b>{destacado.titulo} (open source):</b> {destacado.resumen}
+            {destacado.repo && <> <a href={destacado.repo}>{sinProtocolo(destacado.repo)}</a></>}
+        </p>
+        {seleccion.map((p) => (
+            <p class="proy">
+                <b>{p.titulo}:</b> {p.resumen} <span class="stack">({p.stack.join(", ")})</span>
+                {p.link && <> <a href={p.link.url}>{sinProtocolo(p.link.url)}</a></>}
+                {!p.link && p.repo && <> <a href={p.repo}>{sinProtocolo(p.repo)}</a></>}
+            </p>
+        ))}
+        {automatizaciones.map((p) => (
+            <p class="proy"><b>{p.titulo}:</b> {p.resumen}</p>
+        ))}
+    </section>
+
+    <section>
+        <h2>{T.edu}</h2>
+        {educacion.map((e) => (
+            <div class="entrada">
+                <p class="fila"><b>{e.lugar.split(",")[0]}</b><span>{e.lugar.split(",")[1]?.trim()}</span></p>
+                <p class="fila"><span>{e.titulo}</span><i>{e.periodo}</i></p>
+            </div>
+        ))}
+    </section>
+
+    <section>
+        <h2>{T.cert}</h2>
+        <ul class="plana">
+            {certificaciones.map((c) => <li>{c.nombre}{fechaCert(c.emisor)}</li>)}
+        </ul>
+    </section>
+
+    <section>
+        <h2>{T.hab}</h2>
+        {habilidades.map((h) => (
+            <p class="hab"><b>{h.grupo}:</b> {h.items.join(", ")}.</p>
+        ))}
+    </section>
+
+    <section>
+        <h2>{T.idiomas}</h2>
+        <ul class="plana">
+            {persona.idiomas.map((l) => <li><b>{l.nombre}:</b> {l.nivel}</li>)}
+        </ul>
+    </section>
+</main>
+
+<style is:global>
+    @page { size: A4; margin: 14mm 15mm 13mm; }
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    html { background: #e9e9e6; }
+    body {
+        margin: 0;
+        font: 10pt/1.32 "Times New Roman", "Liberation Serif", "Nimbus Roman", Times, serif;
+        color: #111;
+    }
+    .hoja { background: #fff; max-width: 210mm; margin: 24px auto; padding: 14mm 15mm; box-shadow: 0 2px 18px rgb(0 0 0 / 0.15); }
+    a { color: inherit; text-decoration: none; }
+    p { margin: 0; }
+
+    .cab { text-align: center; margin-bottom: 9pt; }
+    .cab h1 { font-size: 21pt; font-weight: 400; margin: 0; line-height: 1.1; }
+    .cab .sub { font-size: 17pt; line-height: 1.15; }
+    .cab .contacto { font-size: 9pt; margin-top: 3pt; }
+
+    h2 {
+        font-size: 13.5pt;
+        font-weight: 700;
+        margin: 10pt 0 4pt;
+        padding-bottom: 1pt;
+        border-bottom: 0.8pt solid #111;
+        break-after: avoid;
+    }
+    .parrafo { text-align: justify; text-indent: 1.4em; }
+
+    .entrada { margin-bottom: 4pt; break-inside: avoid; }
+    .empresa { font-weight: 700; padding-left: 1.4em; }
+    .fila { display: flex; justify-content: space-between; gap: 1em; }
+    ul { margin: 1pt 0 0; padding-left: 1.4em; list-style: "◦  "; }
+    li { margin: 0.6pt 0; text-align: justify; }
+
+    .proy, .hab { text-indent: 1.4em; text-align: justify; margin-bottom: 2.5pt; }
+    .proy .stack { color: #333; }
+    .proy a { font-style: italic; }
+    .plana { list-style: none; padding-left: 1.4em; }
+
+    @media print {
+        html { background: none; }
+        .hoja { margin: 0; padding: 0; max-width: none; box-shadow: none; }
+    }
+</style>
+</body>
+</html>
