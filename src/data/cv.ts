@@ -189,6 +189,8 @@ export const habilidades = [
 export const certificaciones = [
     { nombre: "Google Professional Workspace Administrator", emisor: "Google", destacada: true },
     { nombre: "Microsoft 365 Platforms and Apps (Administrator, Outlook, Azure Fundamentals)", emisor: "Microsoft" },
+    { nombre: "Azure AI App and Agent Developer Associate (AI-103) — en preparación", emisor: "Microsoft" },
+    { nombre: "Curso: Introduction to Azure AI Services", emisor: "Pluralsight · Abr 2025" },
     { nombre: "PCI DSS: Securing Data, Systems and Applications", emisor: "PCI SSC" },
     { nombre: "Six Sigma White Belt", emisor: "Six Sigma" },
     { nombre: "DEX Certification", emisor: "Capgemini · Dic 2024" },
