@@ -135,8 +135,8 @@ export const proyectos: Proyecto[] = [
     },
     {
         titulo: "NeuralT LLM",
-        resumen: "Proyecto educativo: una red neuronal pequeña entrenada con datos que genera un LLM, y un servidor local que muestra el entrenamiento en vivo, paso a paso.",
-        stack: ["Python", "Redes neuronales", "LLM"],
+        resumen: "Proyecto educativo open source: un LLM local (Llama 3.1 8B con Ollama) genera los datos de entrenamiento, una red neuronal pequeña aprende de ellos y luego decide sola en microsegundos, sin llamar al LLM ni a la nube. El entrenamiento se ve en vivo en el navegador.",
+        stack: ["Python", "Ollama", "Llama 3.1", "Redes neuronales"],
         repo: "https://github.com/devlewiso/neuralt-llm",
     },
     {
@@ -153,8 +153,8 @@ export const proyectos: Proyecto[] = [
     },
     {
         titulo: "HomeLab",
-        resumen: "Infraestructura self-hosted con Proxmox VE y Docker: automatización del hogar, monitoreo con Prometheus, n8n, Langfuse para observabilidad de LLMs y acceso remoto seguro.",
-        stack: ["Proxmox VE", "Docker", "Prometheus", "Home Assistant", "Cloudflare Tunnels"],
+        resumen: "Infraestructura self-hosted con Proxmox VE y Docker: LLMs locales con Ollama en GPU (RTX 2060), n8n, Langfuse para observabilidad de LLMs, monitoreo con Prometheus, automatización del hogar y acceso remoto seguro.",
+        stack: ["Proxmox VE", "Docker", "Ollama", "Langfuse", "Prometheus", "Cloudflare Tunnels"],
         repo: "https://github.com/devlewiso/homelab-architecture",
     },
 ];
@@ -180,7 +180,7 @@ export const automatizaciones: Proyecto[] = [
 
 export const habilidades = [
     { grupo: "Análisis & QA", items: ["Business Systems Analysis", "QA / UAT", "AI Testing", "Estrategia de pruebas", "User stories", "Métricas de contact center (NPS, FCR, AHT, contención)"] },
-    { grupo: "IA & Automatización", items: ["Dialogflow CX", "Genesys Cloud CX", "LangGraph", "LangChain", "MCP", "A2A", "Claude Code", "Claude / Gemini / GPT", "n8n", "Apps Script", "Twilio"] },
+    { grupo: "IA & Automatización", items: ["Dialogflow CX", "Genesys Cloud CX", "LangGraph", "LangChain", "MCP", "A2A", "Claude Code", "Claude / Gemini / GPT", "LLMs locales (Ollama: Llama 3.1/3.2, Qwen2.5-Coder; modelos cuantizados, contexto extendido)", "Langfuse", "n8n", "Apps Script", "Twilio"] },
     { grupo: "Desarrollo", items: ["TypeScript", "JavaScript", "Python", "React", "Next.js", "Astro", "Node.js", "SQL", "REST APIs", "Excel VBA"] },
     { grupo: "Datos & Cloud", items: ["BigQuery", "Supabase", "Postgres", "Google Cloud", "Vercel", "Cloudflare Workers"] },
     { grupo: "Infraestructura & Ops", items: ["Linux", "Docker", "Proxmox VE", "Prometheus", "Git / GitHub", "Postman", "Privacidad de datos (PIPEDA, enmascaramiento de PII)", "Secretos fuera del código"] },

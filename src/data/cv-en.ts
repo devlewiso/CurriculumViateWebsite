@@ -112,8 +112,8 @@ export const proyectos: Proyecto[] = [
     },
     {
         titulo: "NeuralT LLM",
-        resumen: "Educational project: a small neural network trained on LLM-generated data, with a local server that shows training live, step by step.",
-        stack: ["Python", "Neural networks", "LLM"],
+        resumen: "Open-source educational project: a local LLM (Llama 3.1 8B on Ollama) generates the training data, a small neural network learns from it and then decides on its own in microseconds, with no LLM or cloud calls. Training is shown live in the browser.",
+        stack: ["Python", "Ollama", "Llama 3.1", "Neural networks"],
         repo: "https://github.com/devlewiso/neuralt-llm",
     },
     {
@@ -130,8 +130,8 @@ export const proyectos: Proyecto[] = [
     },
     {
         titulo: "HomeLab",
-        resumen: "Self-hosted infrastructure on Proxmox VE and Docker: home automation, Prometheus monitoring, n8n, Langfuse for LLM observability and secure remote access.",
-        stack: ["Proxmox VE", "Docker", "Prometheus", "Home Assistant", "Cloudflare Tunnels"],
+        resumen: "Self-hosted infrastructure on Proxmox VE and Docker: local LLMs with Ollama on GPU (RTX 2060), n8n, Langfuse for LLM observability, Prometheus monitoring, home automation and secure remote access.",
+        stack: ["Proxmox VE", "Docker", "Ollama", "Langfuse", "Prometheus", "Cloudflare Tunnels"],
         repo: "https://github.com/devlewiso/homelab-architecture",
     },
 ];
@@ -156,7 +156,7 @@ export const automatizaciones: Proyecto[] = [
 
 export const habilidades = [
     { grupo: "Analysis & QA", items: ["Business Systems Analysis", "QA / UAT", "AI Testing", "Test strategy", "User stories", "Contact center metrics (NPS, FCR, AHT, containment)"] },
-    { grupo: "AI & Automation", items: ["Dialogflow CX", "Genesys Cloud CX", "LangGraph", "LangChain", "MCP", "A2A", "Claude Code", "Claude / Gemini / GPT", "n8n", "Apps Script", "Twilio"] },
+    { grupo: "AI & Automation", items: ["Dialogflow CX", "Genesys Cloud CX", "LangGraph", "LangChain", "MCP", "A2A", "Claude Code", "Claude / Gemini / GPT", "Local LLMs (Ollama: Llama 3.1/3.2, Qwen2.5-Coder; quantized models, extended context)", "Langfuse", "n8n", "Apps Script", "Twilio"] },
     { grupo: "Development", items: ["TypeScript", "JavaScript", "Python", "React", "Next.js", "Astro", "Node.js", "SQL", "REST APIs", "Excel VBA"] },
     { grupo: "Data & Cloud", items: ["BigQuery", "Supabase", "Postgres", "Google Cloud", "Vercel", "Cloudflare Workers"] },
     { grupo: "Infrastructure & Ops", items: ["Linux", "Docker", "Proxmox VE", "Prometheus", "Git / GitHub", "Postman", "Data privacy (PIPEDA, PII masking)", "Secrets kept out of code"] },
