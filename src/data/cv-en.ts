@@ -3,9 +3,9 @@ import type { Rol, Proyecto } from "./cv";
 export { SITE_URL } from "./cv";
 
 export const persona = {
-    nombre: "Iran Lewis Ortiz",
-    rol: "Business Systems Analyst",
-    especialidad: "AI, Automation and Software Development",
+    nombre: "Iran Lewis Trinidad Ortiz",
+    rol: "AI Solutions Architect",
+    especialidad: "Conversational AI, multi-agent systems and automation",
     ubicacion: "Guatemala, Central America",
     email: "devlewiso@gmail.com",
     linkedin: "https://linkedin.com/in/devlewiso",
@@ -19,15 +19,15 @@ export const persona = {
 };
 
 export const resumen =
-    "Business Systems Analyst at TELUS (Business Customer Experience), where I bridge contact center operations and AI engineering: I bring conversational bots built on Dialogflow CX and Genesys to customer channels, measure their quality with real call data, and build agents that automate the team's analysis and testing. Outside of work I build my own software end to end: Clipmill, an open-source React video framework; Sarao, an AI-powered event planning platform; and automations with n8n and LLMs. My rule: code decides, the LLM explains, and data security comes first.";
+    "AI solutions architect with 4+ years in automation and business processes; the last one at TELUS designing and shipping conversational AI and multi-agent systems to production: the Genesys Cloud → Dialogflow CX → APIs integration, a LangGraph testing agent, an agent fleet over MCP and A2A, and model-usage rules based on data sensitivity. Outside of work I build my own software end to end: Clipmill, an open-source React video framework; Sarao, an AI-powered event planning platform; and automations with n8n and LLMs. My rule: code decides, the LLM explains, and data security comes first.";
 
 export const experiencia: Rol[] = [
     {
         periodo: "Dec 2025 — Present",
         actual: true,
-        puesto: "Business Systems Analyst · CCAI Tech Lead",
-        empresa: "TELUS · Business Customer Experience",
-        lugar: "Canada / Remote",
+        puesto: "Application Support Analyst III · Role: CCAI Tech Lead (conversational AI & agents)",
+        empresa: "TELUS · Solutions Delivery Business Analytics Services",
+        lugar: "Guatemala / Remote (Canada-based teams)",
         logros: [
             "Tech Lead (CCAI BSA) for the WhatsApp integration for Business customers: Genesys Cloud → Dialogflow CX → TELUS APIs, in English and French, with handoff to live agents. Defined the test strategy, UAT test cases and user stories.",
             "Built an 11-node LangGraph testing agent that runs the team's scenarios against 4 Dialogflow CX bots across two environments, validates with deterministic code (the LLM only narrates the verdict) and produces HTML reports, with its own React/TypeScript front end.",

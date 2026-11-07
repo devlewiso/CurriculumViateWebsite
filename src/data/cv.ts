@@ -7,9 +7,9 @@ export const CV_PDF = "https://drive.google.com/file/d/1OLhNYfoH28kXnX0TSSfFQyXd
 export const CV_PDF_EN = "https://drive.google.com/file/d/1qzCyuqj2s35TT34qwnlgiizVYvdEh0-1/view?usp=sharing";
 
 export const persona = {
-    nombre: "Iran Lewis Ortiz",
-    rol: "Business Systems Analyst",
-    especialidad: "IA, Automatización y Desarrollo de Software",
+    nombre: "Iran Lewis Trinidad Ortiz",
+    rol: "Arquitecto de Soluciones de IA",
+    especialidad: "IA conversacional, sistemas multiagente y automatización",
     ubicacion: "Guatemala, Centroamérica",
     email: "devlewiso@gmail.com",
     linkedin: "https://linkedin.com/in/devlewiso",
@@ -23,7 +23,7 @@ export const persona = {
 };
 
 export const resumen =
-    "Business Systems Analyst en TELUS (Business Customer Experience), donde soy el puente entre la operación de contact center y la ingeniería de IA: llevo bots conversacionales con Dialogflow CX y Genesys a los canales del cliente, mido su calidad con datos reales de llamadas y construyo agentes que automatizan el análisis y las pruebas del equipo. Fuera del trabajo construyo software propio de punta a punta: Clipmill, un framework open source de video con React; Sarao, una plataforma de eventos con IA; y automatizaciones con n8n y LLMs. Mi regla: el código decide y el LLM explica, con la seguridad de los datos primero.";
+    "Arquitecto de soluciones de IA con más de 4 años en automatización y procesos de negocio; el último, en TELUS, diseñando y llevando a producción IA conversacional y sistemas multiagente: la integración Genesys Cloud → Dialogflow CX → APIs, un agente de pruebas en LangGraph, una flota de agentes con MCP y A2A, y las reglas de uso de modelos según la sensibilidad de los datos. Fuera del trabajo construyo software propio de punta a punta: Clipmill, un framework open source de video con React; Sarao, una plataforma de eventos con IA; y automatizaciones con n8n y LLMs. Mi regla: el código decide y el LLM explica, con la seguridad de los datos primero.";
 
 export type Rol = {
     periodo: string;
@@ -39,9 +39,9 @@ export const experiencia: Rol[] = [
     {
         periodo: "Dic 2025 — Presente",
         actual: true,
-        puesto: "Business Systems Analyst · Tech Lead CCAI",
-        empresa: "TELUS · Business Customer Experience",
-        lugar: "Canadá / Remoto",
+        puesto: "Analista de Soporte de Aplicaciones III · rol: Tech Lead CCAI (IA conversacional y agentes)",
+        empresa: "TELUS · Solutions Delivery Business Analytics Services",
+        lugar: "Guatemala / Remoto (equipos en Canadá)",
         logros: [
             "Tech Lead (CCAI BSA) de la integración de WhatsApp para clientes Business: Genesys Cloud → Dialogflow CX → APIs de TELUS, en inglés y francés, con handoff a agentes humanos. Definí la estrategia de pruebas, los casos de UAT y las user stories.",
             "Construí un agente de pruebas en LangGraph (11 nodos) que corre los escenarios del equipo contra 4 bots de Dialogflow CX en dos ambientes, valida con código determinístico (el LLM solo narra el veredicto) y entrega reportes en HTML, con su propio frontend en React/TypeScript.",

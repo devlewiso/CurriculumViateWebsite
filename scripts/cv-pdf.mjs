@@ -15,7 +15,7 @@ try {
         try { await fetch(`http://localhost:${PUERTO}/cv/`); break; } catch { await new Promise((r) => setTimeout(r, 250)); }
     }
     mkdirSync("pdf", { recursive: true });
-    for (const [ruta, archivo] of [["/cv/", "Iran_Lewis_Ortiz_CV_ES.pdf"], ["/en/cv/", "Iran_Lewis_Ortiz_CV_EN.pdf"]]) {
+    for (const [ruta, archivo] of [["/cv/", "Iran_Lewis_Trinidad_Ortiz_CV_ES.pdf"], ["/en/cv/", "Iran_Lewis_Trinidad_Ortiz_CV_EN.pdf"]]) {
         execFileSync(CHROME, [
             "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
             `--print-to-pdf=pdf/${archivo}`, `http://localhost:${PUERTO}${ruta}`,
